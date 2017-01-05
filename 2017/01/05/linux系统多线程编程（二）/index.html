@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="linux 多线程," />
+  <meta name="keywords" content="linux多线程," />
 
 
 
@@ -84,21 +84,28 @@
 
 
 
-<meta name="description" content="一、线程与进程1）区别进程和线程的主要差别在于它们是不同的操作系统资源管理方式：
-进程有独立的地址空间，一个进程崩溃后，在保护模式下不会对其它进程产生影响，而线程只是一个进程中的不同执行路径。线程有自己的堆栈和局部变量，但线程之间没有单独的地址空间，一个线程死掉就等于整个进程死掉，所以多进程的程序要比多线程的程序健壮，但在进程切换时，耗费资源较大，效率要差一些。但对于一些要求同时进行并且又要共享某">
+<meta name="description" content="一、线程的创建1)相关库函数:int pthread_create(pthread_t *thread,const pthread_attr_t * attr,void*(*start)(void *),void *arg);
+
+新线程创建之后会通过调用start(arg)函数开始执行。
+thread参数在函数返回之后将保存一个线程的唯一标示(线程ID)。
+通过attr 参数来制定线程的属性，若此">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux多线程编程（一）概念">
-<meta property="og:url" content="http://yoursite.com/2017/01/04/Linux-多线程编程/index.html">
+<meta property="og:title" content="Linux多线程编程（二）线程的创建和终止">
+<meta property="og:url" content="http://yoursite.com/2017/01/05/linux系统多线程编程（二）/index.html">
 <meta property="og:site_name" content="GeneralSandman的博客">
-<meta property="og:description" content="一、线程与进程1）区别进程和线程的主要差别在于它们是不同的操作系统资源管理方式：
-进程有独立的地址空间，一个进程崩溃后，在保护模式下不会对其它进程产生影响，而线程只是一个进程中的不同执行路径。线程有自己的堆栈和局部变量，但线程之间没有单独的地址空间，一个线程死掉就等于整个进程死掉，所以多进程的程序要比多线程的程序健壮，但在进程切换时，耗费资源较大，效率要差一些。但对于一些要求同时进行并且又要共享某">
-<meta property="og:image" content="http://oj8qdsa91.bkt.clouddn.com/steelsea.jpg">
-<meta property="og:updated_time" content="2017-01-05T06:03:44.893Z">
+<meta property="og:description" content="一、线程的创建1)相关库函数:int pthread_create(pthread_t *thread,const pthread_attr_t * attr,void*(*start)(void *),void *arg);
+
+新线程创建之后会通过调用start(arg)函数开始执行。
+thread参数在函数返回之后将保存一个线程的唯一标示(线程ID)。
+通过attr 参数来制定线程的属性，若此">
+<meta property="og:updated_time" content="2017-01-05T06:14:59.997Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux多线程编程（一）概念">
-<meta name="twitter:description" content="一、线程与进程1）区别进程和线程的主要差别在于它们是不同的操作系统资源管理方式：
-进程有独立的地址空间，一个进程崩溃后，在保护模式下不会对其它进程产生影响，而线程只是一个进程中的不同执行路径。线程有自己的堆栈和局部变量，但线程之间没有单独的地址空间，一个线程死掉就等于整个进程死掉，所以多进程的程序要比多线程的程序健壮，但在进程切换时，耗费资源较大，效率要差一些。但对于一些要求同时进行并且又要共享某">
-<meta name="twitter:image" content="http://oj8qdsa91.bkt.clouddn.com/steelsea.jpg">
+<meta name="twitter:title" content="Linux多线程编程（二）线程的创建和终止">
+<meta name="twitter:description" content="一、线程的创建1)相关库函数:int pthread_create(pthread_t *thread,const pthread_attr_t * attr,void*(*start)(void *),void *arg);
+
+新线程创建之后会通过调用start(arg)函数开始执行。
+thread参数在函数返回之后将保存一个线程的唯一标示(线程ID)。
+通过attr 参数来制定线程的属性，若此">
 
 
 
@@ -126,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/04/Linux-多线程编程/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/05/linux系统多线程编程（二）/"/>
 
 
 
 
 
-  <title> Linux多线程编程（一）概念 | GeneralSandman的博客 </title>
+  <title> Linux多线程编程（二）线程的创建和终止 | GeneralSandman的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -255,7 +262,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/04/Linux-多线程编程/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/05/linux系统多线程编程（二）/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="GeneralSandman">
@@ -279,7 +286,7 @@
             
             
               
-                Linux多线程编程（一）概念
+                Linux多线程编程（二）线程的创建和终止
               
             
           </h1>
@@ -294,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-04T21:18:58+08:00">
-                2017-01-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-05T12:54:00+08:00">
+                2017-01-05
               </time>
             
 
@@ -335,8 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/04/Linux-多线程编程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/04/Linux-多线程编程/" itemprop="commentCount"></span>
+                <a href="/2017/01/05/linux系统多线程编程（二）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/05/linux系统多线程编程（二）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -372,14 +379,43 @@
       
 
       
-        <h2 id="一、线程与进程"><a href="#一、线程与进程" class="headerlink" title="一、线程与进程"></a>一、线程与进程</h2><h3 id="1）区别"><a href="#1）区别" class="headerlink" title="1）区别"></a>1）区别</h3><h4 id="进程和线程的主要差别在于它们是不同的操作系统资源管理方式："><a href="#进程和线程的主要差别在于它们是不同的操作系统资源管理方式：" class="headerlink" title="进程和线程的主要差别在于它们是不同的操作系统资源管理方式："></a>进程和线程的主要差别在于它们是不同的操作系统资源管理方式：</h4><blockquote>
-<p>进程有独立的地址空间，一个进程崩溃后，在保护模式下不会对其它进程产生影响，而线程只是一个进程中的不同执行路径。线程有自己的堆栈和局部变量，但线程之间没有单独的地址空间，一个线程死掉就等于整个进程死掉，所以多进程的程序要比多线程的程序健壮，但在进程切换时，耗费资源较大，效率要差一些。但对于一些要求同时进行并且又要共享某些变量的并发操作，只能用线程，不能用进程。</p>
+        <h3 id="一、线程的创建"><a href="#一、线程的创建" class="headerlink" title="一、线程的创建"></a>一、线程的创建</h3><h4 id="1-相关库函数"><a href="#1-相关库函数" class="headerlink" title="1)相关库函数:"></a>1)相关库函数:</h4><pre><code>int pthread_create(pthread_t *thread,const pthread_attr_t * attr,void*(*start)(void *),void *arg);
+</code></pre><ul>
+<li>新线程创建之后会通过调用start(arg)函数开始执行。</li>
+<li>thread参数在函数返回之后将保存一个线程的唯一标示(线程ID)。</li>
+<li>通过attr 参数来制定线程的属性，若此参数为NULL，将使用线程的默认属性，线程的默认分离属性为joinable。</li>
+</ul>
+<h4 id="2-创建线程的状态"><a href="#2-创建线程的状态" class="headerlink" title="2)创建线程的状态"></a>2)创建线程的状态</h4><p><strong>线程之间将会共享：</strong></p>
+<ul>
+<li>进程ID和父进程ID</li>
+<li>控制终端</li>
+<li>打开的文件描述符</li>
+<li>信号处置</li>
+<li>errno变量</li>
+</ul>
+<h3 id="二、线程的结束"><a href="#二、线程的结束" class="headerlink" title="二、线程的结束"></a>二、线程的结束</h3><h3 id="1）终止线程方式："><a href="#1）终止线程方式：" class="headerlink" title="1）终止线程方式："></a>1）终止线程方式：</h3><ul>
+<li>线程调用的start函数结束之后即终止创建的线程。</li>
+<li>线程调用pthread_exit()。</li>
+<li>线程调用pthread_cancel()取消线程。</li>
+<li>若任一线程调用exit(),或者主线程调用了return语句，则所有的线程都会终止。</li>
+</ul>
+<p>通过调用pthread_exit()结束线程，相当于在start函数中调用return语句，返回值将有主线程的pthread_join()来获取。retval参数制定了线程退出时的返回值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void pthread_exit(void *retval);</div></pre></td></tr></table></figure>
+<h3 id="三、处置已经终止的线程"><a href="#三、处置已经终止的线程" class="headerlink" title="三、处置已经终止的线程"></a>三、处置已经终止的线程</h3><blockquote>
+<p>线程的分离和结合:<br>线程有两种分离状态:结合(joined)和分离(dected),他们决定了线程以什么样的方式结束。<br>结合(joinable):一个可以结合的线程可以被其他线程回收，进而释放该线程所拥有的资源。所以在线程被结合之前，线程拥有的资源是不会被释放的。<br>分离(detached):不能被其他线程所回收，他所拥有的资源将在系统结束时被自动释放。<br>在上面的例子中，我们采用默认的线程分离状态:可结合的(joinable)。也就是说我们在创建线程之后，原先的线程必须采用pthread_join()才能把创建的线程回收，进而释放他拥有的资源。如果不能释放，就形成了僵尸进程。如果选择进程为分离状态，那么创建的进程将会在某个时刻自动释放资源，不需要主线程来回收。<br>工程师要根据特定的需求选择线程的分离状态。<br>设置线程分离类型的函数:<br>pthread_attr_setdetachedstate()<br>第二个参数可以选择PTHREAD_CREATE_DETACHED(可分离)<br>PTHREAD_CREATE_JOINABLE(可结合)<br>如果线程运行的非常快，在pthread_create()函数返回之前就已经运行结束，终止后，会把线程号和其他资源交给别人，这样pthread_create()就会得到错误的线程号。为解决这个问题:创建的线程调用pthread_cond_timewait()应该等待一会儿，pthread_cond_timewait()可以设置等待条件变量cond，如果超时，则返回；如果等待到条件变量cond，也返回。</p>
 </blockquote>
-<h3 id="2）优缺点"><a href="#2）优缺点" class="headerlink" title="2）优缺点"></a>2）优缺点</h3><p>线程执行开销小，但不利于资源的管理和保护；而进程正相反。</p>
-<h2 id="二、如何选择线程和进程"><a href="#二、如何选择线程和进程" class="headerlink" title="二、如何选择线程和进程"></a>二、如何选择线程和进程</h2><p>###线程的优点<br>1.线程之间数据共享非常简单。相比之下，进程之间的数据共享需要更多的投入。(例如创建共享内存段或者使用pipe管道)<br>2.创建线程快于创建进程。线程之间的上下文切换消耗的时间比较短。</p>
-<p>###进程的优点<br>1.多线程编程时，要确保调用线程安全的函数，或者以线程安全的方式调用函数，然而多进程不要关注这些(由操作系统来控制进程安全)。<br>2.某个线程的bug，肯能会影响其他线程，因为线程之间共享着相同的地址空间。相反，进程之间的数据隔离更加彻底。<br>3.每个线程都在争用宿主进程的有限地址空间。如果线程栈和线程特有数据消耗掉进程虚拟地址空间，后续线程将无法使用这些区域。<br>4.不利于资源的管理和保护。</p>
-<p>###选择进程线程注意事项<br>1.除了数据，线程之间还会共享：文件描述符、信号处理、当前工作目录、用户ID和组ID等等。</p>
-<p><img src="http://oj8qdsa91.bkt.clouddn.com/steelsea.jpg" alt=""></p>
+<h4 id="1-相关库函数-1"><a href="#1-相关库函数-1" class="headerlink" title="1)相关库函数"></a>1)相关库函数</h4><pre><code>int pthread_join(pthread_t thread,void ** retval);
+pthread_detached(pthread_t thread);
+</code></pre><h4 id="2-通过joinable来终止线程"><a href="#2-通过joinable来终止线程" class="headerlink" title="2)通过joinable来终止线程"></a>2)通过joinable来终止线程</h4><p>如果线程终止状态为joinable，则只能由创建该线程的主线程来调用pthread_join()去回收资源。线程创建后默认为joinable。</p>
+<h4 id="3-通过detached分离线程"><a href="#3-通过detached分离线程" class="headerlink" title="3)通过detached分离线程"></a>3)通过detached分离线程</h4><p>分离线程，我们不关心线程的终止状态，让他们的资源在结束后被系统自动释放。通过操作系统来释放他们的资源。</p>
+<h5 id="如何设定detached类型"><a href="#如何设定detached类型" class="headerlink" title="如何设定detached类型"></a><strong><em>如何设定detached类型</em></strong></h5><p>1)在创建线程时，指定分离状态:首先初始化一个线程属性，把分离状态设置为detached，然后把线程属性作为参数传给pthread_create()，我们以前创建线程pthread_attr_t参数为NULL，系统默认为分离属性为joinable。</p>
+<pre><code>pthread_t       tid;
+pthread_attr_t  attr;
+pthread_attr_init(&amp;attr);
+pthread_attr_setdetachstate(&amp;attr, PTHREAD_CREATE_DETACHED);
+pthread_create(&amp;tid, &amp;attr, THREAD_FUNCTION, arg);
+</code></pre><p>2)先创建默认属性线程，通过调用pthread_detached()来修改指定线程属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">代码</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -403,7 +439,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux-多线程/" rel="tag"># linux 多线程</a>
+            <a href="/tags/linux多线程/" rel="tag"># linux多线程</a>
           
         </div>
       
@@ -412,8 +448,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/04/hexo配置与优化/" rel="next" title="hexo配置与优化">
-                <i class="fa fa-chevron-left"></i> hexo配置与优化
+              <a href="/2017/01/04/Linux-多线程编程/" rel="next" title="Linux多线程编程（一）概念">
+                <i class="fa fa-chevron-left"></i> Linux多线程编程（一）概念
               </a>
             
           </div>
@@ -422,8 +458,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/05/linux系统多线程编程（二）/" rel="prev" title="Linux多线程编程（二）线程的创建和终止">
-                Linux多线程编程（二）线程的创建和终止 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/05/test/" rel="prev" title="test">
+                test <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -450,8 +486,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/04/Linux-多线程编程/"
-           data-title="Linux多线程编程（一）概念" data-url="http://yoursite.com/2017/01/04/Linux-多线程编程/">
+      <div class="ds-thread" data-thread-key="2017/01/05/linux系统多线程编程（二）/"
+           data-title="Linux多线程编程（二）线程的创建和终止" data-url="http://yoursite.com/2017/01/05/linux系统多线程编程（二）/">
       </div>
     
   </div>
@@ -551,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、线程与进程"><span class="nav-number">1.</span> <span class="nav-text">一、线程与进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）区别"><span class="nav-number">1.1.</span> <span class="nav-text">1）区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#进程和线程的主要差别在于它们是不同的操作系统资源管理方式："><span class="nav-number">1.1.1.</span> <span class="nav-text">进程和线程的主要差别在于它们是不同的操作系统资源管理方式：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）优缺点"><span class="nav-number">1.2.</span> <span class="nav-text">2）优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、如何选择线程和进程"><span class="nav-number">2.</span> <span class="nav-text">二、如何选择线程和进程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、线程的创建"><span class="nav-number">1.</span> <span class="nav-text">一、线程的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-相关库函数"><span class="nav-number">1.1.</span> <span class="nav-text">1)相关库函数:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-创建线程的状态"><span class="nav-number">1.2.</span> <span class="nav-text">2)创建线程的状态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、线程的结束"><span class="nav-number">2.</span> <span class="nav-text">二、线程的结束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1）终止线程方式："><span class="nav-number">3.</span> <span class="nav-text">1）终止线程方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、处置已经终止的线程"><span class="nav-number">4.</span> <span class="nav-text">三、处置已经终止的线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-相关库函数-1"><span class="nav-number">4.1.</span> <span class="nav-text">1)相关库函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-通过joinable来终止线程"><span class="nav-number">4.2.</span> <span class="nav-text">2)通过joinable来终止线程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-通过detached分离线程"><span class="nav-number">4.3.</span> <span class="nav-text">3)通过detached分离线程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#如何设定detached类型"><span class="nav-number">4.3.1.</span> <span class="nav-text">如何设定detached类型</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

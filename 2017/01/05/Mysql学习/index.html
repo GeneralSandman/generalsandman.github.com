@@ -1,0 +1,829 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="mysql," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="一、创建存储过程规则：12345CREATE PROCEDURE sp_name([参数列表])[存储特性]BEGIN	routime_body;END;
+
+
+参数列表形式：[INT|OUT|INOUT]param_name type
+存储特性：———————–
+
+
+实例1：123456DELIMITER //CREATE PROCEDURE Avgfunction()BEGIN	SELECT *">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql学习(十) 存储过程和函数">
+<meta property="og:url" content="http://yoursite.com/2017/01/05/Mysql学习/index.html">
+<meta property="og:site_name" content="GeneralSandman的博客">
+<meta property="og:description" content="一、创建存储过程规则：12345CREATE PROCEDURE sp_name([参数列表])[存储特性]BEGIN	routime_body;END;
+
+
+参数列表形式：[INT|OUT|INOUT]param_name type
+存储特性：———————–
+
+
+实例1：123456DELIMITER //CREATE PROCEDURE Avgfunction()BEGIN	SELECT *">
+<meta property="og:updated_time" content="2017-01-05T08:42:46.893Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mysql学习(十) 存储过程和函数">
+<meta name="twitter:description" content="一、创建存储过程规则：12345CREATE PROCEDURE sp_name([参数列表])[存储特性]BEGIN	routime_body;END;
+
+
+参数列表形式：[INT|OUT|INOUT]param_name type
+存储特性：———————–
+
+
+实例1：123456DELIMITER //CREATE PROCEDURE Avgfunction()BEGIN	SELECT *">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/01/05/Mysql学习/"/>
+
+
+
+
+
+  <title> Mysql学习(十) 存储过程和函数 | GeneralSandman的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">GeneralSandman的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">GeneralSandman</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/05/Mysql学习/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="GeneralSandman">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://oj8qdsa91.bkt.clouddn.com/1461165599464.jpeg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="GeneralSandman的博客">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="GeneralSandman的博客" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Mysql学习(十) 存储过程和函数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-05T14:04:20+08:00">
+                2017-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/05/Mysql学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/05/Mysql学习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+			
+			
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+<span>&nbsp; | &nbsp;
+<span id="busuanzi_value_page_pv" ></span>次阅读
+</span>    
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、创建存储过程"><a href="#一、创建存储过程" class="headerlink" title="一、创建存储过程"></a>一、创建存储过程</h2><h3 id="规则："><a href="#规则：" class="headerlink" title="规则："></a><strong>规则：</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">CREATE PROCEDURE sp_name([参数列表])</div><div class="line">[存储特性]</div><div class="line">BEGIN</div><div class="line">	routime_body;</div><div class="line">END;</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>参数列表形式：[INT|OUT|INOUT]param_name type</li>
+<li>存储特性：———————–</li>
+</ul>
+</blockquote>
+<h3 id="实例1："><a href="#实例1：" class="headerlink" title="实例1："></a>实例1：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">DELIMITER //</div><div class="line">CREATE PROCEDURE Avgfunction()</div><div class="line">BEGIN</div><div class="line">	SELECT * FROM stu_info;</div><div class="line">END//</div><div class="line">DELIMITER ;</div></pre></td></tr></table></figure>
+<h3 id="实例2："><a href="#实例2：" class="headerlink" title="实例2："></a>实例2：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">DELIMITER //</div><div class="line">CREATE PROCEDURE Count(OUT param1 INT)</div><div class="line">BEGIN</div><div class="line">SELECT COUNT(*) INTO param1 FROM stu_info;</div><div class="line">END;</div><div class="line">DELIMITER ;</div></pre></td></tr></table></figure>
+<h3 id="调用过程："><a href="#调用过程：" class="headerlink" title="调用过程："></a>调用过程：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CALL Avgfunction；</div><div class="line">CALL Count(result);</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="二、创建存储函数"><a href="#二、创建存储函数" class="headerlink" title="二、创建存储函数"></a>二、创建存储函数</h2><h3 id="规则：-1"><a href="#规则：-1" class="headerlink" title="规则："></a>规则：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">CREATE FUNCTION function_name ([func_parmeter])</div><div class="line">RETURNS type</div><div class="line">[特性]</div><div class="line">rontine_body</div></pre></td></tr></table></figure>
+<h3 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">CREATE FUNCTION Name()</div><div class="line">RETURNS VARCHAR(50)</div><div class="line">RETURN (SELECT s_name FROM stu_info WHERE id=&apos;1000&apos;);</div></pre></td></tr></table></figure>
+<h3 id="调用存储函数"><a href="#调用存储函数" class="headerlink" title="调用存储函数:"></a>调用存储函数:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT Name();</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="三、过程和函数中变量的使用"><a href="#三、过程和函数中变量的使用" class="headerlink" title="三、过程和函数中变量的使用"></a>三、过程和函数中变量的使用</h2><p>实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">BEGIN</div><div class="line">DECLARE stu_name VARCHAR(15);</div><div class="line">DECLARE stu_id INT(11);</div><div class="line">SET stu_name=&apos;lizhenhu&apos;;</div><div class="line">SELECT name INTO stu_name FROM * stu_info WHERE id=&apos;1001&apos;;</div><div class="line">END//</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="四、定义条件和处理程序"><a href="#四、定义条件和处理程序" class="headerlink" title="四、定义条件和处理程序"></a>四、定义条件和处理程序</h2><hr>
+<h2 id="五、光标的使用"><a href="#五、光标的使用" class="headerlink" title="五、光标的使用"></a>五、光标的使用</h2><hr>
+<h2 id="六、流程控制"><a href="#六、流程控制" class="headerlink" title="六、流程控制"></a>六、流程控制</h2><hr>
+<h2 id="七、调用存储过程和函数"><a href="#七、调用存储过程和函数" class="headerlink" title="七、调用存储过程和函数"></a>七、调用存储过程和函数</h2><hr>
+<h2 id="八、查看存储过程和函数"><a href="#八、查看存储过程和函数" class="headerlink" title="八、查看存储过程和函数"></a>八、查看存储过程和函数</h2><h3 id="1-查询系统的information-schema数据库-information-schema-Rountines"><a href="#1-查询系统的information-schema数据库-information-schema-Rountines" class="headerlink" title="1.查询系统的information_schema数据库:information_schema.Rountines"></a>1.查询系统的information_schema数据库:information_schema.Rountines</h3><p><strong><em>规则：</em></strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM information_schema.Routines</div><div class="line">WHERE ROUTINE_NAME=&apos;sp_name&apos;\G</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>ROUNTINE_NAME 存储的是存储过程和存储函数的名字<br>sp_name 要查找的函数和过程名称</p>
+</blockquote>
+<p><strong><em>实例：</em></strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT * FROM information_schema.Routines WHERE ROUTINE_NAME=&apos;Glass&apos;\G</div><div class="line">*************************** 1. row ***************************</div><div class="line">           SPECIFIC_NAME: Glass</div><div class="line">         ROUTINE_CATALOG: def</div><div class="line">          ROUTINE_SCHEMA: test</div><div class="line">            ROUTINE_NAME: Glass</div><div class="line">            ROUTINE_TYPE: FUNCTION</div><div class="line">               DATA_TYPE: int</div><div class="line">CHARACTER_MAXIMUM_LENGTH: NULL</div><div class="line">  CHARACTER_OCTET_LENGTH: NULL</div><div class="line">       NUMERIC_PRECISION: 10</div><div class="line">           NUMERIC_SCALE: 0</div><div class="line">      DATETIME_PRECISION: NULL</div><div class="line">      CHARACTER_SET_NAME: NULL</div><div class="line">          COLLATION_NAME: NULL</div><div class="line">          DTD_IDENTIFIER: int(10)</div><div class="line">            ROUTINE_BODY: SQL</div><div class="line">      ROUTINE_DEFINITION: RETURN (SELECT glass FROM stu_info WHERE s_id=&apos;4&apos;)</div><div class="line">           EXTERNAL_NAME: NULL</div><div class="line">       EXTERNAL_LANGUAGE: NULL</div><div class="line">         PARAMETER_STYLE: SQL</div><div class="line">        IS_DETERMINISTIC: NO</div><div class="line">         SQL_DATA_ACCESS: CONTAINS SQL</div><div class="line">                SQL_PATH: NULL</div><div class="line">           SECURITY_TYPE: DEFINER</div><div class="line">                 CREATED: 2017-01-05 15:02:13</div><div class="line">            LAST_ALTERED: 2017-01-05 15:02:13</div><div class="line">                SQL_MODE: ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</div><div class="line">         ROUTINE_COMMENT:</div><div class="line">                 DEFINER: root@localhost</div><div class="line">    CHARACTER_SET_CLIENT: utf8</div><div class="line">    COLLATION_CONNECTION: utf8_general_ci</div><div class="line">      DATABASE_COLLATION: latin1_swedish_ci</div><div class="line">1 row in set (0.01 sec)</div></pre></td></tr></table></figure></p>
+<h3 id="2-通过SHOW-STATUS"><a href="#2-通过SHOW-STATUS" class="headerlink" title="2.通过SHOW STATUS"></a>2.通过SHOW STATUS</h3><p>规则：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SHOW &#123;FUNCTION|PROCDEURE&#125; STATUS LIKE’pattern‘；</div></pre></td></tr></table></figure></p>
+<p>实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW FUNCTION STATUS LIKE&apos;G%&apos;\G</div><div class="line">*************************** 1. row ***************************</div><div class="line">                  Db: test</div><div class="line">                Name: Glass</div><div class="line">                Type: FUNCTION</div><div class="line">             Definer: root@localhost</div><div class="line">            Modified: 2017-01-05 15:02:13</div><div class="line">             Created: 2017-01-05 15:02:13</div><div class="line">       Security_type: DEFINER</div><div class="line">             Comment:</div><div class="line">character_set_client: utf8</div><div class="line">collation_connection: utf8_general_ci</div><div class="line">  Database Collation: latin1_swedish_ci</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h3 id="3-通过SHOW-CREATE"><a href="#3-通过SHOW-CREATE" class="headerlink" title="3.通过SHOW CREATE"></a>3.通过SHOW CREATE</h3><p>规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SHOW CREATE &#123;PROCEDURE|FUNCTION&#125; sp_name;</div></pre></td></tr></table></figure>
+<p>实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW CREATE FUNCTION Glass\G</div><div class="line">*************************** 1. row ***************************</div><div class="line">            Function: Glass</div><div class="line">            sql_mode: ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</div><div class="line">     Create Function: CREATE DEFINER=`root`@`localhost` FUNCTION `Glass`() RETURNS int(10)</div><div class="line">RETURN (SELECT glass FROM stu_info WHERE s_id=&apos;4&apos;)</div><div class="line">character_set_client: utf8</div><div class="line">collation_connection: utf8_general_ci</div><div class="line">  Database Collation: latin1_swedish_ci</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="九、修改存储过程和函数"><a href="#九、修改存储过程和函数" class="headerlink" title="九、修改存储过程和函数"></a>九、修改存储过程和函数</h2><p><strong><em>规则：</em></strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER &#123;PROCEDURE|FUNCTION&#125; sp_name [特性]</div></pre></td></tr></table></figure></p>
+<p><strong><em>特性取值：</em></strong></p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CONTAINS SQL</td>
+<td>子程序包含SQL语句，不包含读写数据语句</td>
+</tr>
+<tr>
+<td>NO SQL</td>
+<td>不包含SQL语句</td>
+</tr>
+<tr>
+<td>READ SQL DATA</td>
+<td>包含读数据语句</td>
+</tr>
+<tr>
+<td>SQL SECURITY {DEFINER/INVOKER}</td>
+<td>指明谁有权限来调用</td>
+</tr>
+<tr>
+<td>DEFINER</td>
+<td>定义者</td>
+</tr>
+<tr>
+<td>INVOKER</td>
+<td>调用者</td>
+</tr>
+<tr>
+<td>COMMENT ‘string’</td>
+<td>注释信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong><em>实例：</em></strong><br>修改Glass的函数：读写权限改为MODIFIES SQL DATA，并指明调用者可以执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ALTER FUNCTION Glass</div><div class="line">MODIFIES SQL DATA</div><div class="line">SQL SECURITY INVOKER;</div></pre></td></tr></table></figure></p>
+<p>查看修改后的权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT SPECIFIC_NAME,SQL_DATA_ACCESS,SECURITY_TYPE</div><div class="line">FROM information_schema.Routines</div><div class="line">WHERE ROUTINE_NAME=&apos;Glass&apos;;</div></pre></td></tr></table></figure></p>
+<p><strong><em>结果：</em></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT SPECIFIC_NAME,SQL_DATA_ACCESS,SECURITY_TYPE FROM information_schema.Routines WHERE ROUTINE_NAME=&apos;Glass&apos;;</div><div class="line">+---------------+-------------------+---------------+</div><div class="line">| SPECIFIC_NAME | SQL_DATA_ACCESS   | SECURITY_TYPE |</div><div class="line">+---------------+-------------------+---------------+</div><div class="line">| Glass         | MODIFIES SQL DATA | INVOKER       |</div><div class="line">+---------------+-------------------+---------------+</div><div class="line">1 row in set (0.01 sec)</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="十、删除存储过程和函数"><a href="#十、删除存储过程和函数" class="headerlink" title="十、删除存储过程和函数"></a>十、删除存储过程和函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DROP &#123;FUNCTION|PROCEDURE&#125; sp_name;</div></pre></td></tr></table></figure>
+<p><strong><em>实例：</em></strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DROP FUNCTION Glass;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/05/test/" rel="next" title="test">
+                <i class="fa fa-chevron-left"></i> test
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/05/leetcode/" rel="prev" title="add_two_number">
+                add_two_number <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/05/Mysql学习/"
+           data-title="Mysql学习(十) 存储过程和函数" data-url="http://yoursite.com/2017/01/05/Mysql学习/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oj8qdsa91.bkt.clouddn.com/1461165599464.jpeg"
+               alt="GeneralSandman" />
+          <p class="site-author-name" itemprop="name">GeneralSandman</p>
+          <p class="site-description motion-element" itemprop="description">追求卓越，成功就会不请自来！！！</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、创建存储过程"><span class="nav-number">1.</span> <span class="nav-text">一、创建存储过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#规则："><span class="nav-number">1.1.</span> <span class="nav-text">规则：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例1："><span class="nav-number">1.2.</span> <span class="nav-text">实例1：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例2："><span class="nav-number">1.3.</span> <span class="nav-text">实例2：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用过程："><span class="nav-number">1.4.</span> <span class="nav-text">调用过程：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、创建存储函数"><span class="nav-number">2.</span> <span class="nav-text">二、创建存储函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#规则：-1"><span class="nav-number">2.1.</span> <span class="nav-text">规则：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例："><span class="nav-number">2.2.</span> <span class="nav-text">实例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用存储函数"><span class="nav-number">2.3.</span> <span class="nav-text">调用存储函数:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、过程和函数中变量的使用"><span class="nav-number">3.</span> <span class="nav-text">三、过程和函数中变量的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、定义条件和处理程序"><span class="nav-number">4.</span> <span class="nav-text">四、定义条件和处理程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、光标的使用"><span class="nav-number">5.</span> <span class="nav-text">五、光标的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、流程控制"><span class="nav-number">6.</span> <span class="nav-text">六、流程控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、调用存储过程和函数"><span class="nav-number">7.</span> <span class="nav-text">七、调用存储过程和函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、查看存储过程和函数"><span class="nav-number">8.</span> <span class="nav-text">八、查看存储过程和函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查询系统的information-schema数据库-information-schema-Rountines"><span class="nav-number">8.1.</span> <span class="nav-text">1.查询系统的information_schema数据库:information_schema.Rountines</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-通过SHOW-STATUS"><span class="nav-number">8.2.</span> <span class="nav-text">2.通过SHOW STATUS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-通过SHOW-CREATE"><span class="nav-number">8.3.</span> <span class="nav-text">3.通过SHOW CREATE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#九、修改存储过程和函数"><span class="nav-number">9.</span> <span class="nav-text">九、修改存储过程和函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十、删除存储过程和函数"><span class="nav-number">10.</span> <span class="nav-text">十、删除存储过程和函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GeneralSandman</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+您是第<span id="busuanzi_value_site_uv"></span>个来到的小伙伴
+
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"GeneralSandman"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
