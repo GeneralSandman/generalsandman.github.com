@@ -84,22 +84,52 @@
 
 
 
-<meta name="description" content="Hexo更改主题##第一步：选择主题hexo含有两份配置文件(_config.yml)，一份位于根目录下——站点配置文件，一份位于主题目录下——主题配置文件。hexo安装主题只需要把主题文件放置到根目录下的themes目录下，然后修改配置文件即可。具体安装步骤如下：
-###1）下载next主题通过git将next主题下载到themes文件next下
-&amp;gt;git clone https://gi">
+<meta name="description" content="mysql触发器的使用
+创建触发器### 
+
+查看触发器1.SHOW TRIGGERS\G2.通过查看information_schema 数据库
+
+
+1SELECT * FROM information_schema.trigger WHERE TRIGGER_NAME=&amp;apos;tigger1&amp;apos;;
+
+触发器的使用
+删除触发器
+
+
+添加用户12mysql&amp;gt; GRANT SELE">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo配置与优化">
-<meta property="og:url" content="http://yoursite.com/2017/01/04/hexo配置与优化/index.html">
+<meta property="og:title" content="mysql">
+<meta property="og:url" content="http://yoursite.com/2017/01/16/mysql/index.html">
 <meta property="og:site_name" content="GeneralSandman的博客">
-<meta property="og:description" content="Hexo更改主题##第一步：选择主题hexo含有两份配置文件(_config.yml)，一份位于根目录下——站点配置文件，一份位于主题目录下——主题配置文件。hexo安装主题只需要把主题文件放置到根目录下的themes目录下，然后修改配置文件即可。具体安装步骤如下：
-###1）下载next主题通过git将next主题下载到themes文件next下
-&amp;gt;git clone https://gi">
-<meta property="og:updated_time" content="2017-01-04T13:27:10.522Z">
+<meta property="og:description" content="mysql触发器的使用
+创建触发器### 
+
+查看触发器1.SHOW TRIGGERS\G2.通过查看information_schema 数据库
+
+
+1SELECT * FROM information_schema.trigger WHERE TRIGGER_NAME=&amp;apos;tigger1&amp;apos;;
+
+触发器的使用
+删除触发器
+
+
+添加用户12mysql&amp;gt; GRANT SELE">
+<meta property="og:updated_time" content="2017-01-16T11:50:23.291Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo配置与优化">
-<meta name="twitter:description" content="Hexo更改主题##第一步：选择主题hexo含有两份配置文件(_config.yml)，一份位于根目录下——站点配置文件，一份位于主题目录下——主题配置文件。hexo安装主题只需要把主题文件放置到根目录下的themes目录下，然后修改配置文件即可。具体安装步骤如下：
-###1）下载next主题通过git将next主题下载到themes文件next下
-&amp;gt;git clone https://gi">
+<meta name="twitter:title" content="mysql">
+<meta name="twitter:description" content="mysql触发器的使用
+创建触发器### 
+
+查看触发器1.SHOW TRIGGERS\G2.通过查看information_schema 数据库
+
+
+1SELECT * FROM information_schema.trigger WHERE TRIGGER_NAME=&amp;apos;tigger1&amp;apos;;
+
+触发器的使用
+删除触发器
+
+
+添加用户12mysql&amp;gt; GRANT SELE">
 
 
 
@@ -127,13 +157,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/04/hexo配置与优化/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/16/mysql/"/>
 
 
 
 
 
-  <title> hexo配置与优化 | GeneralSandman的博客 </title>
+  <title> mysql | GeneralSandman的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -256,7 +286,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/04/hexo配置与优化/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/16/mysql/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="GeneralSandman">
@@ -280,7 +310,7 @@
             
             
               
-                hexo配置与优化
+                mysql
               
             
           </h1>
@@ -295,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-04T21:18:58+08:00">
-                2017-01-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-16T15:45:24+08:00">
+                2017-01-16
               </time>
             
 
@@ -314,8 +344,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/04/hexo配置与优化/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/04/hexo配置与优化/" itemprop="commentCount"></span>
+                <a href="/2017/01/16/mysql/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/16/mysql/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -351,131 +381,20 @@
       
 
       
-        <h2 id="Hexo更改主题"><a href="#Hexo更改主题" class="headerlink" title="Hexo更改主题"></a>Hexo更改主题</h2><p>##第一步：选择主题<br>hexo含有两份配置文件(_config.yml)，一份位于根目录下——站点配置文件，一份位于主题目录下——主题配置文件。<br>hexo安装主题只需要把主题文件放置到根目录下的themes目录下，然后修改配置文件即可。具体安装步骤如下：</p>
-<p>###1）下载next主题<br>通过git将next主题下载到themes文件next下</p>
-<pre><code>&gt;git clone https://github.com/iissnan/hexo-theme-next shemes/next
-</code></pre><p>###2）启动主题<br>下载完成后，找到站点配置文件，找到theme字段，改为theme： next<br>注意：冒号后有空格</p>
-<p>###3）验证主题是否运行<br>运行</p>
-<blockquote>
-<p>hexo s debug</p>
-</blockquote>
-<p>访问</p>
-<blockquote>
-<p><a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></p>
-</blockquote>
-<p>如果4000端口被占用了，出现错误</p>
-<blockquote>
-<p>FATAL Port 4000 has been used. Try other port instead.<br>hexo server -p 5000<br>更改端口测试</p>
-</blockquote>
-<p>确保站点正确运行</p>
-<p>##第二步：安装主题</p>
-<p>##第三步：配置</p>
-<p>###选择Scheme<br>next通过scheme选择主题中的主题。Mist是NexT的第一款主题。启动Mist需要将主题配置文件中的<br>-#scheme:Mist 前面的注释#去掉</p>
-<p>###语言设置<br>编辑站点配置文件，将language设置成所需要的语言即可</p>
-<table>
-<thead>
-<tr>
-<th>语言</th>
-<th>设定值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>English</td>
-<td>language: en</td>
-</tr>
-<tr>
-<td>简体中文</td>
-<td>language: zh-Hans</td>
-</tr>
-<tr>
-<td>正体中文</td>
-<td>language: zh-hk</td>
-</tr>
-</tbody>
-</table>
-<p>###菜单设置<br>配置位于主题配置文件menu</p>
-<table>
-<thead>
-<tr>
-<th>键值</th>
-<th>设定值</th>
-<th>comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>home</td>
-<td>home: /</td>
-<td>主页</td>
-</tr>
-<tr>
-<td>archives</td>
-<td>archives: /archives</td>
-<td>归档页</td>
-</tr>
-<tr>
-<td>categories</td>
-<td>categories: /categories</td>
-<td>分类页（需手动创建）</td>
-</tr>
-<tr>
-<td>tags</td>
-<td>tags: /tags</td>
-<td>标签页（需手动创建）</td>
-</tr>
-<tr>
-<td>about</td>
-<td>about: /about</td>
-<td>关于页面 （需手动创建）</td>
-</tr>
-<tr>
-<td>commonweal</td>
-<td>commonweal: /404.html</td>
-<td>公益 404 （需手动创建</td>
-</tr>
-</tbody>
-</table>
-<p>###侧边设置<br>默认情况下，侧栏仅在文章页面（拥有目录列表）时才显示。可以通过修改 主题配置文件 中的 sidebar 字段来控制侧栏的行为。</p>
-<p>支持的选项有：</p>
-<blockquote>
-<p>post - 默认行为，在文章页面（拥有目录列表）时显示<br>always - 在所有页面中都显示<br>hide - 在所有页面中都隐藏（可以手动展开）</p>
-</blockquote>
-<p>###头像设置<br>编辑站点配置文件，新增字段avatar，值设置为链接地址。<br>头像的链接地址可以是：</p>
-<table>
-<thead>
-<tr>
-<th>地址</th>
-<th>值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>完整的互联网URL</td>
-<td><a href="https://avatars1.githubusercontent.com/u/32269?v=3&amp;s=460" target="_blank" rel="external">https://avatars1.githubusercontent.com/u/32269?v=3&amp;s=460</a>                                        </td>
-</tr>
-<tr>
-<td>站点内的地址</td>
-<td>/uploads/avatar.jpg - 需要将你的头像图片放置在 站点的 source/uploads/（可能需要新建uploads目录）</td>
-</tr>
-</tbody>
-</table>
-<p>###作者名称<br>编辑 站点配置文件，设置 author 为你的昵称。</p>
-<p>###站点描述设置<br>编辑 站点配置文件，设置 description 字段为你的站点描述。站点描述可以是你喜欢的一句签名:)</p>
-<p>##总结</p>
-<p>#为博客添加阅读量统计</p>
-<p>1.注册LeanCloud<br>2.配置LeanCloud<br>3.修改站点配置文件</p>
-<h1 id="hexo命令"><a href="#hexo命令" class="headerlink" title="hexo命令"></a>hexo命令</h1><p>npm install hexo -g #安装<br>npm update hexo -g #升级<br>hexo init #初始化</p>
-<h2 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h2><p>hexo n “我的博客” == hexo new “我的博客” #新建文章<br>hexo p == hexo publish<br>hexo g == hexo generate#生成<br>hexo s == hexo server #启动服务预览<br>hexo d == hexo deploy#部署</p>
-<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>hexo server #Hexo 会监视文件变动并自动更新，您无须重启服务器。<br>hexo server -s #静态模式<br>hexo server -p 5000 #更改端口<br>hexo server -i 192.168.1.1 #自定义 IP</p>
-<p>hexo clean #清除缓存 网页正常情况下可以忽略此条命令<br>hexo g #生成静态网页<br>hexo d #开始部署</p>
-<h2 id="监视文件变动"><a href="#监视文件变动" class="headerlink" title="监视文件变动"></a>监视文件变动</h2><p>hexo generate #使用 Hexo 生成静态文件快速而且简单<br>hexo generate –watch #监视文件变动</p>
-<h2 id="完成部署后"><a href="#完成部署后" class="headerlink" title="完成部署后"></a>完成部署后</h2><p>两个命令的作用是相同的<br>hexo generate –deploy<br>hexo deploy –generate</p>
-<p>hexo deploy -g<br>hexo server -g</p>
-<h2 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h2><p>hexo publish [layout] <title></title></p>
-<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>hexo new “postName” #新建文章<br>hexo new page “pageName” #新建页面<br>hexo generate #生成静态页面至public目录<br>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>hexo deploy #将.deploy目录部署到GitHub</p>
-<p>hexo new [layout] <title><br>hexo new photo “My Gallery”<br>hexo new “Hello World” –lang tw</title></p>
-
+        <h2 id="mysql触发器的使用"><a href="#mysql触发器的使用" class="headerlink" title="mysql触发器的使用"></a>mysql触发器的使用</h2><ul>
+<li><h1 id="创建触发器"><a href="#创建触发器" class="headerlink" title="创建触发器"></a>创建触发器</h1><p>### </p>
+</li>
+<li><h1 id="查看触发器"><a href="#查看触发器" class="headerlink" title="查看触发器"></a>查看触发器</h1><p>1.SHOW TRIGGERS\G<br>2.通过查看information_schema 数据库</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM information_schema.trigger WHERE TRIGGER_NAME=&apos;tigger1&apos;;</div></pre></td></tr></table></figure>
+<ul>
+<li><h1 id="触发器的使用"><a href="#触发器的使用" class="headerlink" title="触发器的使用"></a>触发器的使用</h1></li>
+<li><h1 id="删除触发器"><a href="#删除触发器" class="headerlink" title="删除触发器"></a>删除触发器</h1></li>
+<li></li>
+</ul>
+<h1 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; GRANT SELECT,UPDATE ON *.* TO &apos;li&apos;@&apos;localhost&apos;</div><div class="line">    -&gt; IDENTIFIED BY &apos;123456&apos;;</div></pre></td></tr></table></figure>
+<h1 id="参看添加后的用户"><a href="#参看添加后的用户" class="headerlink" title="参看添加后的用户"></a>参看添加后的用户</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT * FROM user\G</div><div class="line"></div><div class="line"></div><div class="line">*************************** 4. row ***************************</div><div class="line">                  Host: localhost</div><div class="line">                  User: li</div><div class="line">           Select_priv: Y</div><div class="line">           Insert_priv: N</div><div class="line">           Update_priv: Y</div><div class="line">           Delete_priv: N</div><div class="line">           Create_priv: N</div><div class="line">             Drop_priv: N</div><div class="line">           Reload_priv: N</div><div class="line">         Shutdown_priv: N</div><div class="line">          Process_priv: N</div><div class="line">             File_priv: N</div><div class="line">            Grant_priv: N</div><div class="line">       References_priv: N</div><div class="line">            Index_priv: N</div><div class="line">            Alter_priv: N</div><div class="line">          Show_db_priv: N</div><div class="line">            Super_priv: N</div><div class="line"> Create_tmp_table_priv: N</div><div class="line">      Lock_tables_priv: N</div><div class="line">          Execute_priv: N</div><div class="line">       Repl_slave_priv: N</div><div class="line">      Repl_client_priv: N</div><div class="line">      Create_view_priv: N</div><div class="line">        Show_view_priv: N</div><div class="line">   Create_routine_priv: N</div><div class="line">    Alter_routine_priv: N</div><div class="line">      Create_user_priv: N</div><div class="line">            Event_priv: N</div><div class="line">          Trigger_priv: N</div><div class="line">Create_tablespace_priv: N</div><div class="line">              ssl_type: </div><div class="line">            ssl_cipher: </div><div class="line">           x509_issuer: </div><div class="line">          x509_subject: </div><div class="line">         max_questions: 0</div><div class="line">           max_updates: 0</div><div class="line">       max_connections: 0</div><div class="line">  max_user_connections: 0</div><div class="line">                plugin: mysql_native_password</div><div class="line"> authentication_string: *6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9</div><div class="line">      password_expired: N</div><div class="line"> password_last_changed: 2017-01-16 17:09:33</div><div class="line">     password_lifetime: NULL</div><div class="line">        account_locked: N</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -501,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/04/Linux-多线程编程/" rel="next" title="Linux多线程编程（一）概念">
-                <i class="fa fa-chevron-left"></i> Linux多线程编程（一）概念
+              <a href="/2017/01/05/八皇后问题-回溯算法/" rel="next" title="八皇后问题&回溯算法">
+                <i class="fa fa-chevron-left"></i> 八皇后问题&回溯算法
               </a>
             
           </div>
@@ -510,10 +429,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/05/linux系统多线程编程（二）/" rel="prev" title="Linux多线程编程（二）线程的创建和终止">
-                Linux多线程编程（二）线程的创建和终止 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -539,8 +454,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/04/hexo配置与优化/"
-           data-title="hexo配置与优化" data-url="http://yoursite.com/2017/01/04/hexo配置与优化/">
+      <div class="ds-thread" data-thread-key="2017/01/16/mysql/"
+           data-title="mysql" data-url="http://yoursite.com/2017/01/16/mysql/">
       </div>
     
   </div>
@@ -640,7 +555,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo更改主题"><span class="nav-number">1.</span> <span class="nav-text">Hexo更改主题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo命令"><span class="nav-number"></span> <span class="nav-text">hexo命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简写"><span class="nav-number">1.</span> <span class="nav-text">简写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器"><span class="nav-number">2.</span> <span class="nav-text">服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监视文件变动"><span class="nav-number">3.</span> <span class="nav-text">监视文件变动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成部署后"><span class="nav-number">4.</span> <span class="nav-text">完成部署后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#草稿"><span class="nav-number">5.</span> <span class="nav-text">草稿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板"><span class="nav-number">6.</span> <span class="nav-text">模板</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql触发器的使用"><span class="nav-number">1.</span> <span class="nav-text">mysql触发器的使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建触发器"><span class="nav-number"></span> <span class="nav-text">创建触发器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看触发器"><span class="nav-number"></span> <span class="nav-text">查看触发器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#触发器的使用"><span class="nav-number"></span> <span class="nav-text">触发器的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除触发器"><span class="nav-number"></span> <span class="nav-text">删除触发器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加用户"><span class="nav-number"></span> <span class="nav-text">添加用户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参看添加后的用户"><span class="nav-number"></span> <span class="nav-text">参看添加后的用户</span></a></div>
             
 
           </div>
