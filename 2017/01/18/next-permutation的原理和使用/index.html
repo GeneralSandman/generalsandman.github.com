@@ -84,52 +84,19 @@
 
 
 
-<meta name="description" content="mysql触发器的使用
-创建触发器### 
-
-查看触发器1.SHOW TRIGGERS\G2.通过查看information_schema 数据库
-
-
-1SELECT * FROM information_schema.trigger WHERE TRIGGER_NAME=&amp;apos;tigger1&amp;apos;;
-
-触发器的使用
-删除触发器
-
-
-添加用户12mysql&amp;gt; GRANT SELE">
+<meta name="description" content="思路：在当前序列中，从尾端向前寻找两个相邻元素，前一个记为front，后一个记为back，并且满足front &amp;lt; back。然后再从尾端寻找另一个元素tmp，如果满足front &amp;lt; *tmp，即将第front个元素与第tmp个元素对调，并将第back个元素之后（包括back）的所有元素颠倒排序，即求出下一个序列了
+ 代码:1234567891011121314151617181920">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql">
-<meta property="og:url" content="http://yoursite.com/2017/01/16/mysql/index.html">
+<meta property="og:title" content="next_permutation的原理和使用">
+<meta property="og:url" content="http://yoursite.com/2017/01/18/next-permutation的原理和使用/index.html">
 <meta property="og:site_name" content="GeneralSandman的博客">
-<meta property="og:description" content="mysql触发器的使用
-创建触发器### 
-
-查看触发器1.SHOW TRIGGERS\G2.通过查看information_schema 数据库
-
-
-1SELECT * FROM information_schema.trigger WHERE TRIGGER_NAME=&amp;apos;tigger1&amp;apos;;
-
-触发器的使用
-删除触发器
-
-
-添加用户12mysql&amp;gt; GRANT SELE">
-<meta property="og:updated_time" content="2017-01-16T11:50:23.291Z">
+<meta property="og:description" content="思路：在当前序列中，从尾端向前寻找两个相邻元素，前一个记为front，后一个记为back，并且满足front &amp;lt; back。然后再从尾端寻找另一个元素tmp，如果满足front &amp;lt; *tmp，即将第front个元素与第tmp个元素对调，并将第back个元素之后（包括back）的所有元素颠倒排序，即求出下一个序列了
+ 代码:1234567891011121314151617181920">
+<meta property="og:updated_time" content="2017-01-18T04:12:15.469Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql">
-<meta name="twitter:description" content="mysql触发器的使用
-创建触发器### 
-
-查看触发器1.SHOW TRIGGERS\G2.通过查看information_schema 数据库
-
-
-1SELECT * FROM information_schema.trigger WHERE TRIGGER_NAME=&amp;apos;tigger1&amp;apos;;
-
-触发器的使用
-删除触发器
-
-
-添加用户12mysql&amp;gt; GRANT SELE">
+<meta name="twitter:title" content="next_permutation的原理和使用">
+<meta name="twitter:description" content="思路：在当前序列中，从尾端向前寻找两个相邻元素，前一个记为front，后一个记为back，并且满足front &amp;lt; back。然后再从尾端寻找另一个元素tmp，如果满足front &amp;lt; *tmp，即将第front个元素与第tmp个元素对调，并将第back个元素之后（包括back）的所有元素颠倒排序，即求出下一个序列了
+ 代码:1234567891011121314151617181920">
 
 
 
@@ -157,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/16/mysql/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/18/next-permutation的原理和使用/"/>
 
 
 
 
 
-  <title> mysql | GeneralSandman的博客 </title>
+  <title> next_permutation的原理和使用 | GeneralSandman的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -286,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/16/mysql/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/18/next-permutation的原理和使用/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="GeneralSandman">
@@ -310,7 +277,7 @@
             
             
               
-                mysql
+                next_permutation的原理和使用
               
             
           </h1>
@@ -325,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-16T15:45:24+08:00">
-                2017-01-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-18T11:15:47+08:00">
+                2017-01-18
               </time>
             
 
@@ -336,6 +303,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法-面试-C/" itemprop="url" rel="index">
+                    <span itemprop="name">算法 面试 C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -344,8 +333,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/16/mysql/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/16/mysql/" itemprop="commentCount"></span>
+                <a href="/2017/01/18/next-permutation的原理和使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/18/next-permutation的原理和使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -381,20 +370,11 @@
       
 
       
-        <h2 id="mysql触发器的使用"><a href="#mysql触发器的使用" class="headerlink" title="mysql触发器的使用"></a>mysql触发器的使用</h2><ul>
-<li><h1 id="创建触发器"><a href="#创建触发器" class="headerlink" title="创建触发器"></a>创建触发器</h1><p>### </p>
-</li>
-<li><h1 id="查看触发器"><a href="#查看触发器" class="headerlink" title="查看触发器"></a>查看触发器</h1><p>1.SHOW TRIGGERS\G<br>2.通过查看information_schema 数据库</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM information_schema.trigger WHERE TRIGGER_NAME=&apos;tigger1&apos;;</div></pre></td></tr></table></figure>
-<ul>
-<li><h1 id="触发器的使用"><a href="#触发器的使用" class="headerlink" title="触发器的使用"></a>触发器的使用</h1></li>
-<li><h1 id="删除触发器"><a href="#删除触发器" class="headerlink" title="删除触发器"></a>删除触发器</h1></li>
-<li></li>
-</ul>
-<h1 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; GRANT SELECT,UPDATE ON *.* TO &apos;li&apos;@&apos;localhost&apos;</div><div class="line">    -&gt; IDENTIFIED BY &apos;123456&apos;;</div></pre></td></tr></table></figure>
-<h1 id="参看添加后的用户"><a href="#参看添加后的用户" class="headerlink" title="参看添加后的用户"></a>参看添加后的用户</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT * FROM user\G</div><div class="line"></div><div class="line"></div><div class="line">*************************** 4. row ***************************</div><div class="line">                  Host: localhost</div><div class="line">                  User: li</div><div class="line">           Select_priv: Y</div><div class="line">           Insert_priv: N</div><div class="line">           Update_priv: Y</div><div class="line">           Delete_priv: N</div><div class="line">           Create_priv: N</div><div class="line">             Drop_priv: N</div><div class="line">           Reload_priv: N</div><div class="line">         Shutdown_priv: N</div><div class="line">          Process_priv: N</div><div class="line">             File_priv: N</div><div class="line">            Grant_priv: N</div><div class="line">       References_priv: N</div><div class="line">            Index_priv: N</div><div class="line">            Alter_priv: N</div><div class="line">          Show_db_priv: N</div><div class="line">            Super_priv: N</div><div class="line"> Create_tmp_table_priv: N</div><div class="line">      Lock_tables_priv: N</div><div class="line">          Execute_priv: N</div><div class="line">       Repl_slave_priv: N</div><div class="line">      Repl_client_priv: N</div><div class="line">      Create_view_priv: N</div><div class="line">        Show_view_priv: N</div><div class="line">   Create_routine_priv: N</div><div class="line">    Alter_routine_priv: N</div><div class="line">      Create_user_priv: N</div><div class="line">            Event_priv: N</div><div class="line">          Trigger_priv: N</div><div class="line">Create_tablespace_priv: N</div><div class="line">              ssl_type: </div><div class="line">            ssl_cipher: </div><div class="line">           x509_issuer: </div><div class="line">          x509_subject: </div><div class="line">         max_questions: 0</div><div class="line">           max_updates: 0</div><div class="line">       max_connections: 0</div><div class="line">  max_user_connections: 0</div><div class="line">                plugin: mysql_native_password</div><div class="line"> authentication_string: *6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9</div><div class="line">      password_expired: N</div><div class="line"> password_last_changed: 2017-01-16 17:09:33</div><div class="line">     password_lifetime: NULL</div><div class="line">        account_locked: N</div></pre></td></tr></table></figure>
+        <h2 id="思路："><a href="#思路：" class="headerlink" title=" 思路："></a><strong> 思路：</strong></h2><p>在当前序列中，从尾端向前寻找两个相邻元素，前一个记为<em>front，后一个记为</em>back，并且满足<em>front &lt; </em>back。然后再从尾端寻找另一个元素<em>tmp，如果满足</em>front &lt; *tmp，即将第front个元素与第tmp个元素对调，并将第back个元素之后（包括back）的所有元素颠倒排序，即求出下一个序列了</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title=" 代码:"></a><strong> 代码:</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">#include&lt;iostream&gt;</div><div class="line">#include&lt;cstdio&gt;</div><div class="line">#include&lt;cstring&gt;</div><div class="line">using namespace std;</div><div class="line">void reverse(char * begin,char *end)&#123;</div><div class="line">    for(end--;begin&lt;end;begin++,end--)swap(*begin,*end);</div><div class="line">&#125;</div><div class="line">bool next_permutation(char *begin,char *end)&#123;</div><div class="line">    char *front=end-2;</div><div class="line">    char *back=end-1;</div><div class="line">    for(;front&gt;=begin&amp;&amp;*front&gt;=*back;front--,back--);</div><div class="line">    if(front&lt;begin)</div><div class="line">        return false;</div><div class="line">    char *tmp=end-1;</div><div class="line">    for(;*front&gt;=*tmp;tmp--);</div><div class="line">    swap(*front,*tmp);</div><div class="line">    reverse(back,end);</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line">int main()&#123;</div><div class="line">    char tmp []=&quot;1234&quot;;</div><div class="line">    do&#123;</div><div class="line">        printf(&quot;%s\n&quot;,tmp);</div><div class="line">    &#125;</div><div class="line">    while(next_permutation(tmp,tmp+strlen(tmp)));</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="结果："><a href="#结果：" class="headerlink" title=" 结果： "></a><strong> 结果： </strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">li@li-Inspiron-5557:~/桌面$ ./a</div><div class="line">1234</div><div class="line">1243</div><div class="line">1324</div><div class="line">1342</div><div class="line">1423</div><div class="line">1432</div><div class="line">2134</div><div class="line">2143</div><div class="line">2314</div><div class="line">2341</div><div class="line">2413</div><div class="line">2431</div><div class="line">3124</div><div class="line">3142</div><div class="line">3214</div><div class="line">3241</div><div class="line">3412</div><div class="line">3421</div><div class="line">4123</div><div class="line">4132</div><div class="line">4213</div><div class="line">4231</div><div class="line">4312</div><div class="line">4321</div></pre></td></tr></table></figure>
+<p>通过验证，与C++模板中的next_permutation的结果一样。</p>
+
       
     </div>
 
@@ -420,8 +400,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/05/八皇后问题-回溯算法/" rel="next" title="八皇后问题&回溯算法">
-                <i class="fa fa-chevron-left"></i> 八皇后问题&回溯算法
+              <a href="/2017/01/18/字符串之排列和组合/" rel="next" title="字符串之排列和组合">
+                <i class="fa fa-chevron-left"></i> 字符串之排列和组合
               </a>
             
           </div>
@@ -429,10 +409,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/17/字符串匹配算法/" rel="prev" title="字符串匹配算法">
-                字符串匹配算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -458,8 +434,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/16/mysql/"
-           data-title="mysql" data-url="http://yoursite.com/2017/01/16/mysql/">
+      <div class="ds-thread" data-thread-key="2017/01/18/next-permutation的原理和使用/"
+           data-title="next_permutation的原理和使用" data-url="http://yoursite.com/2017/01/18/next-permutation的原理和使用/">
       </div>
     
   </div>
@@ -559,7 +535,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql触发器的使用"><span class="nav-number">1.</span> <span class="nav-text">mysql触发器的使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建触发器"><span class="nav-number"></span> <span class="nav-text">创建触发器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看触发器"><span class="nav-number"></span> <span class="nav-text">查看触发器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#触发器的使用"><span class="nav-number"></span> <span class="nav-text">触发器的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除触发器"><span class="nav-number"></span> <span class="nav-text">删除触发器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加用户"><span class="nav-number"></span> <span class="nav-text">添加用户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参看添加后的用户"><span class="nav-number"></span> <span class="nav-text">参看添加后的用户</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路："><span class="nav-number">1.</span> <span class="nav-text"> 思路：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text"> 代码:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果："><span class="nav-number">3.</span> <span class="nav-text"> 结果： </span></a></li></ol></div>
             
 
           </div>

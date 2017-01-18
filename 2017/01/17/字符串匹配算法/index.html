@@ -84,52 +84,25 @@
 
 
 
-<meta name="description" content="mysql触发器的使用
-创建触发器### 
+<meta name="description" content="1.朴素模式匹配（BF算法/暴力算法）2.Rabin-Karp算法3.Sunday算法
+Sunday算法是Daniel M.Sunday于1990年提出的一种比BM算法搜索速度更快的算法。其核心思想是：在匹配过程中，模式串并不被要求一定要按从左向右进行比较还是从右向左进行比较，它在发现不匹配时，算法能跳过尽可能多的字符以进行下一步的匹配，从而提高了匹配效率。
 
-查看触发器1.SHOW TRIGGERS\G2.通过查看information_schema 数据库
-
-
-1SELECT * FROM information_schema.trigger WHERE TRIGGER_NAME=&amp;apos;tigger1&amp;apos;;
-
-触发器的使用
-删除触发器
-
-
-添加用户12mysql&amp;gt; GRANT SELE">
+4.KMP算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql">
-<meta property="og:url" content="http://yoursite.com/2017/01/16/mysql/index.html">
+<meta property="og:title" content="字符串匹配算法">
+<meta property="og:url" content="http://yoursite.com/2017/01/17/字符串匹配算法/index.html">
 <meta property="og:site_name" content="GeneralSandman的博客">
-<meta property="og:description" content="mysql触发器的使用
-创建触发器### 
+<meta property="og:description" content="1.朴素模式匹配（BF算法/暴力算法）2.Rabin-Karp算法3.Sunday算法
+Sunday算法是Daniel M.Sunday于1990年提出的一种比BM算法搜索速度更快的算法。其核心思想是：在匹配过程中，模式串并不被要求一定要按从左向右进行比较还是从右向左进行比较，它在发现不匹配时，算法能跳过尽可能多的字符以进行下一步的匹配，从而提高了匹配效率。
 
-查看触发器1.SHOW TRIGGERS\G2.通过查看information_schema 数据库
-
-
-1SELECT * FROM information_schema.trigger WHERE TRIGGER_NAME=&amp;apos;tigger1&amp;apos;;
-
-触发器的使用
-删除触发器
-
-
-添加用户12mysql&amp;gt; GRANT SELE">
-<meta property="og:updated_time" content="2017-01-16T11:50:23.291Z">
+4.KMP算法">
+<meta property="og:updated_time" content="2017-01-17T08:56:03.449Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql">
-<meta name="twitter:description" content="mysql触发器的使用
-创建触发器### 
+<meta name="twitter:title" content="字符串匹配算法">
+<meta name="twitter:description" content="1.朴素模式匹配（BF算法/暴力算法）2.Rabin-Karp算法3.Sunday算法
+Sunday算法是Daniel M.Sunday于1990年提出的一种比BM算法搜索速度更快的算法。其核心思想是：在匹配过程中，模式串并不被要求一定要按从左向右进行比较还是从右向左进行比较，它在发现不匹配时，算法能跳过尽可能多的字符以进行下一步的匹配，从而提高了匹配效率。
 
-查看触发器1.SHOW TRIGGERS\G2.通过查看information_schema 数据库
-
-
-1SELECT * FROM information_schema.trigger WHERE TRIGGER_NAME=&amp;apos;tigger1&amp;apos;;
-
-触发器的使用
-删除触发器
-
-
-添加用户12mysql&amp;gt; GRANT SELE">
+4.KMP算法">
 
 
 
@@ -157,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/16/mysql/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/17/字符串匹配算法/"/>
 
 
 
 
 
-  <title> mysql | GeneralSandman的博客 </title>
+  <title> 字符串匹配算法 | GeneralSandman的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -286,7 +259,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/16/mysql/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/17/字符串匹配算法/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="GeneralSandman">
@@ -310,7 +283,7 @@
             
             
               
-                mysql
+                字符串匹配算法
               
             
           </h1>
@@ -325,8 +298,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-16T15:45:24+08:00">
-                2017-01-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-17T09:54:20+08:00">
+                2017-01-17
               </time>
             
 
@@ -344,8 +317,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/16/mysql/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/16/mysql/" itemprop="commentCount"></span>
+                <a href="/2017/01/17/字符串匹配算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/17/字符串匹配算法/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -381,20 +354,10 @@
       
 
       
-        <h2 id="mysql触发器的使用"><a href="#mysql触发器的使用" class="headerlink" title="mysql触发器的使用"></a>mysql触发器的使用</h2><ul>
-<li><h1 id="创建触发器"><a href="#创建触发器" class="headerlink" title="创建触发器"></a>创建触发器</h1><p>### </p>
-</li>
-<li><h1 id="查看触发器"><a href="#查看触发器" class="headerlink" title="查看触发器"></a>查看触发器</h1><p>1.SHOW TRIGGERS\G<br>2.通过查看information_schema 数据库</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM information_schema.trigger WHERE TRIGGER_NAME=&apos;tigger1&apos;;</div></pre></td></tr></table></figure>
-<ul>
-<li><h1 id="触发器的使用"><a href="#触发器的使用" class="headerlink" title="触发器的使用"></a>触发器的使用</h1></li>
-<li><h1 id="删除触发器"><a href="#删除触发器" class="headerlink" title="删除触发器"></a>删除触发器</h1></li>
-<li></li>
-</ul>
-<h1 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; GRANT SELECT,UPDATE ON *.* TO &apos;li&apos;@&apos;localhost&apos;</div><div class="line">    -&gt; IDENTIFIED BY &apos;123456&apos;;</div></pre></td></tr></table></figure>
-<h1 id="参看添加后的用户"><a href="#参看添加后的用户" class="headerlink" title="参看添加后的用户"></a>参看添加后的用户</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT * FROM user\G</div><div class="line"></div><div class="line"></div><div class="line">*************************** 4. row ***************************</div><div class="line">                  Host: localhost</div><div class="line">                  User: li</div><div class="line">           Select_priv: Y</div><div class="line">           Insert_priv: N</div><div class="line">           Update_priv: Y</div><div class="line">           Delete_priv: N</div><div class="line">           Create_priv: N</div><div class="line">             Drop_priv: N</div><div class="line">           Reload_priv: N</div><div class="line">         Shutdown_priv: N</div><div class="line">          Process_priv: N</div><div class="line">             File_priv: N</div><div class="line">            Grant_priv: N</div><div class="line">       References_priv: N</div><div class="line">            Index_priv: N</div><div class="line">            Alter_priv: N</div><div class="line">          Show_db_priv: N</div><div class="line">            Super_priv: N</div><div class="line"> Create_tmp_table_priv: N</div><div class="line">      Lock_tables_priv: N</div><div class="line">          Execute_priv: N</div><div class="line">       Repl_slave_priv: N</div><div class="line">      Repl_client_priv: N</div><div class="line">      Create_view_priv: N</div><div class="line">        Show_view_priv: N</div><div class="line">   Create_routine_priv: N</div><div class="line">    Alter_routine_priv: N</div><div class="line">      Create_user_priv: N</div><div class="line">            Event_priv: N</div><div class="line">          Trigger_priv: N</div><div class="line">Create_tablespace_priv: N</div><div class="line">              ssl_type: </div><div class="line">            ssl_cipher: </div><div class="line">           x509_issuer: </div><div class="line">          x509_subject: </div><div class="line">         max_questions: 0</div><div class="line">           max_updates: 0</div><div class="line">       max_connections: 0</div><div class="line">  max_user_connections: 0</div><div class="line">                plugin: mysql_native_password</div><div class="line"> authentication_string: *6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9</div><div class="line">      password_expired: N</div><div class="line"> password_last_changed: 2017-01-16 17:09:33</div><div class="line">     password_lifetime: NULL</div><div class="line">        account_locked: N</div></pre></td></tr></table></figure>
+        <h1 id="1-朴素模式匹配（BF算法-暴力算法）"><a href="#1-朴素模式匹配（BF算法-暴力算法）" class="headerlink" title="1.朴素模式匹配（BF算法/暴力算法）"></a>1.朴素模式匹配（BF算法/暴力算法）</h1><h1 id="2-Rabin-Karp算法"><a href="#2-Rabin-Karp算法" class="headerlink" title="2.Rabin-Karp算法"></a>2.Rabin-Karp算法</h1><h1 id="3-Sunday算法"><a href="#3-Sunday算法" class="headerlink" title="3.Sunday算法"></a>3.Sunday算法</h1><blockquote>
+<p>Sunday算法是Daniel M.Sunday于1990年提出的一种比BM算法搜索速度更快的算法。其核心思想是：在匹配过程中，模式串并不被要求一定要按从左向右进行比较还是从右向左进行比较，它在发现不匹配时，算法能跳过尽可能多的字符以进行下一步的匹配，从而提高了匹配效率。</p>
+</blockquote>
+<h1 id="4-KMP算法"><a href="#4-KMP算法" class="headerlink" title="4.KMP算法"></a>4.KMP算法</h1>
       
     </div>
 
@@ -420,8 +383,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/05/八皇后问题-回溯算法/" rel="next" title="八皇后问题&回溯算法">
-                <i class="fa fa-chevron-left"></i> 八皇后问题&回溯算法
+              <a href="/2017/01/16/mysql/" rel="next" title="mysql">
+                <i class="fa fa-chevron-left"></i> mysql
               </a>
             
           </div>
@@ -430,8 +393,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/17/字符串匹配算法/" rel="prev" title="字符串匹配算法">
-                字符串匹配算法 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/17/面试考点-字符串/" rel="prev" title="面试考点-字符串">
+                面试考点-字符串 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -458,8 +421,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/16/mysql/"
-           data-title="mysql" data-url="http://yoursite.com/2017/01/16/mysql/">
+      <div class="ds-thread" data-thread-key="2017/01/17/字符串匹配算法/"
+           data-title="字符串匹配算法" data-url="http://yoursite.com/2017/01/17/字符串匹配算法/">
       </div>
     
   </div>
@@ -559,7 +522,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql触发器的使用"><span class="nav-number">1.</span> <span class="nav-text">mysql触发器的使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建触发器"><span class="nav-number"></span> <span class="nav-text">创建触发器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看触发器"><span class="nav-number"></span> <span class="nav-text">查看触发器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#触发器的使用"><span class="nav-number"></span> <span class="nav-text">触发器的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除触发器"><span class="nav-number"></span> <span class="nav-text">删除触发器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加用户"><span class="nav-number"></span> <span class="nav-text">添加用户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参看添加后的用户"><span class="nav-number"></span> <span class="nav-text">参看添加后的用户</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-朴素模式匹配（BF算法-暴力算法）"><span class="nav-number">1.</span> <span class="nav-text">1.朴素模式匹配（BF算法/暴力算法）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Rabin-Karp算法"><span class="nav-number">2.</span> <span class="nav-text">2.Rabin-Karp算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Sunday算法"><span class="nav-number">3.</span> <span class="nav-text">3.Sunday算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-KMP算法"><span class="nav-number">4.</span> <span class="nav-text">4.KMP算法</span></a></li></ol></div>
             
 
           </div>

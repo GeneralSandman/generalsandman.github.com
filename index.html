@@ -251,6 +251,584 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/18/next-permutation的原理和使用/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="GeneralSandman">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://oj8qdsa91.bkt.clouddn.com/1461165599464.jpeg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="GeneralSandman的博客">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="GeneralSandman的博客" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/18/next-permutation的原理和使用/" itemprop="url">
+                  next_permutation的原理和使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-18T11:15:47+08:00">
+                2017-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法-面试-C/" itemprop="url" rel="index">
+                    <span itemprop="name">算法 面试 C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/18/next-permutation的原理和使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/18/next-permutation的原理和使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+			
+			
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="思路："><a href="#思路：" class="headerlink" title=" 思路："></a><strong> 思路：</strong></h2><p>在当前序列中，从尾端向前寻找两个相邻元素，前一个记为<em>front，后一个记为</em>back，并且满足<em>front &lt; </em>back。然后再从尾端寻找另一个元素<em>tmp，如果满足</em>front &lt; *tmp，即将第front个元素与第tmp个元素对调，并将第back个元素之后（包括back）的所有元素颠倒排序，即求出下一个序列了</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title=" 代码:"></a><strong> 代码:</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">#include&lt;iostream&gt;</div><div class="line">#include&lt;cstdio&gt;</div><div class="line">#include&lt;cstring&gt;</div><div class="line">using namespace std;</div><div class="line">void reverse(char * begin,char *end)&#123;</div><div class="line">    for(end--;begin&lt;end;begin++,end--)swap(*begin,*end);</div><div class="line">&#125;</div><div class="line">bool next_permutation(char *begin,char *end)&#123;</div><div class="line">    char *front=end-2;</div><div class="line">    char *back=end-1;</div><div class="line">    for(;front&gt;=begin&amp;&amp;*front&gt;=*back;front--,back--);</div><div class="line">    if(front&lt;begin)</div><div class="line">        return false;</div><div class="line">    char *tmp=end-1;</div><div class="line">    for(;*front&gt;=*tmp;tmp--);</div><div class="line">    swap(*front,*tmp);</div><div class="line">    reverse(back,end);</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line">int main()&#123;</div><div class="line">    char tmp []=&quot;1234&quot;;</div><div class="line">    do&#123;</div><div class="line">        printf(&quot;%s\n&quot;,tmp);</div><div class="line">    &#125;</div><div class="line">    while(next_permutation(tmp,tmp+strlen(tmp)));</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="结果："><a href="#结果：" class="headerlink" title=" 结果： "></a><strong> 结果： </strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">li@li-Inspiron-5557:~/桌面$ ./a</div><div class="line">1234</div><div class="line">1243</div><div class="line">1324</div><div class="line">1342</div><div class="line">1423</div><div class="line">1432</div><div class="line">2134</div><div class="line">2143</div><div class="line">2314</div><div class="line">2341</div><div class="line">2413</div><div class="line">2431</div><div class="line">3124</div><div class="line">3142</div><div class="line">3214</div><div class="line">3241</div><div class="line">3412</div><div class="line">3421</div><div class="line">4123</div><div class="line">4132</div><div class="line">4213</div><div class="line">4231</div><div class="line">4312</div><div class="line">4321</div></pre></td></tr></table></figure>
+<p>通过验证，与C++模板中的next_permutation的结果一样。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/18/字符串之排列和组合/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="GeneralSandman">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://oj8qdsa91.bkt.clouddn.com/1461165599464.jpeg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="GeneralSandman的博客">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="GeneralSandman的博客" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/18/字符串之排列和组合/" itemprop="url">
+                  字符串之排列和组合
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-18T10:11:49+08:00">
+                2017-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试-算法-字符串-C/" itemprop="url" rel="index">
+                    <span itemprop="name">面试 算法 字符串 C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/18/字符串之排列和组合/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/18/字符串之排列和组合/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+			
+			
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、字符串的排列"><a href="#一、字符串的排列" class="headerlink" title="一、字符串的排列"></a>一、字符串的排列</h1><h2 id="1-全排列-递归-有重复"><a href="#1-全排列-递归-有重复" class="headerlink" title="1.全排列-递归-有重复"></a>1.全排列-递归-有重复</h2><blockquote>
+<p>输入一个字符串，输出其全排列，123的全排列为：123、 132、213、231、 312、 321；</p>
+</blockquote>
+<p><strong> 思路： </strong> 可以看出，123的全排列可以看做：1+23全排列、2+13全排列、3+12全排列；23全排列可以看做2+3的全排列、3+2的全排列……<br>哈哈，这样就显而易见了,任何一个字符串的全排列可以看做是：<br>1.(开头字符串)+(剩余字符串的全排列)，通过递归就可以实现；<br>2.因为开头字符串不是固定的，所以我们要轮流交换字符串，让任何一个字符串都有在开头的机会。</p>
+<p><strong> 代码： </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">#include&lt;iostream&gt;</div><div class="line">#include&lt;cstdio&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">void function(char *ptr,char * begin);</div><div class="line">int main()&#123;</div><div class="line">    char  tm[]=&quot;123&quot;;</div><div class="line">    function(tm,tm);</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void function(char * ptr,char *begin)&#123;</div><div class="line">    if(*begin==&apos;\0&apos;)</div><div class="line">        printf(&quot;%s\n&quot;,ptr);</div><div class="line">    else&#123;</div><div class="line">        for(char *tmp=begin;*tmp!=&apos;\0&apos;;tmp++)&#123;</div><div class="line">            swap(*tmp,*begin);</div><div class="line">            function(ptr,begin+1);</div><div class="line">            swap(*tmp,*begin);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-全排列-递归-无重复"><a href="#2-全排列-递归-无重复" class="headerlink" title="2.全排列-递归-无重复"></a>2.全排列-递归-无重复</h2><p><strong> 但是如果字符串中有重复的字符会怎样呢 </strong></p>
+<p>如果字符串为111：<br>运行结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">li@li-Inspiron-5557:~/桌面/剑指offer$ ./28 </div><div class="line">111</div><div class="line">111</div><div class="line">111</div><div class="line">111</div><div class="line">111</div><div class="line">111</div></pre></td></tr></table></figure>
+<p>所以这样的结果是错误的，如何去重呢：</p>
+<p>如果两个互相交换的字符一样的话，那么就不用交换了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<h2 id="3-全排列-非递归-无重复"><a href="#3-全排列-非递归-无重复" class="headerlink" title="3.全排列-非递归-无重复"></a>3.全排列-非递归-无重复</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/17/面试考点-字符串/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="GeneralSandman">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://oj8qdsa91.bkt.clouddn.com/1461165599464.jpeg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="GeneralSandman的博客">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="GeneralSandman的博客" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/17/面试考点-字符串/" itemprop="url">
+                  面试考点-字符串
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-17T10:18:44+08:00">
+                2017-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/17/面试考点-字符串/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/17/面试考点-字符串/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+			
+			
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/17/字符串匹配算法/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="GeneralSandman">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://oj8qdsa91.bkt.clouddn.com/1461165599464.jpeg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="GeneralSandman的博客">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="GeneralSandman的博客" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/17/字符串匹配算法/" itemprop="url">
+                  字符串匹配算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-17T09:54:20+08:00">
+                2017-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/17/字符串匹配算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/17/字符串匹配算法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+			
+			
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-朴素模式匹配（BF算法-暴力算法）"><a href="#1-朴素模式匹配（BF算法-暴力算法）" class="headerlink" title="1.朴素模式匹配（BF算法/暴力算法）"></a>1.朴素模式匹配（BF算法/暴力算法）</h1><h1 id="2-Rabin-Karp算法"><a href="#2-Rabin-Karp算法" class="headerlink" title="2.Rabin-Karp算法"></a>2.Rabin-Karp算法</h1><h1 id="3-Sunday算法"><a href="#3-Sunday算法" class="headerlink" title="3.Sunday算法"></a>3.Sunday算法</h1><blockquote>
+<p>Sunday算法是Daniel M.Sunday于1990年提出的一种比BM算法搜索速度更快的算法。其核心思想是：在匹配过程中，模式串并不被要求一定要按从左向右进行比较还是从右向左进行比较，它在发现不匹配时，算法能跳过尽可能多的字符以进行下一步的匹配，从而提高了匹配效率。</p>
+</blockquote>
+<h1 id="4-KMP算法"><a href="#4-KMP算法" class="headerlink" title="4.KMP算法"></a>4.KMP算法</h1>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/16/mysql/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1248,421 +1826,13 @@ pthread_create(&amp;tid, &amp;attr, THREAD_FUNCTION, arg);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/04/hexo配置与优化/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="GeneralSandman">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://oj8qdsa91.bkt.clouddn.com/1461165599464.jpeg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="GeneralSandman的博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="GeneralSandman的博客" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/04/hexo配置与优化/" itemprop="url">
-                  hexo配置与优化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-04T21:18:58+08:00">
-                2017-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/04/hexo配置与优化/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/04/hexo配置与优化/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-			
-			
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Hexo更改主题"><a href="#Hexo更改主题" class="headerlink" title="Hexo更改主题"></a>Hexo更改主题</h2><p>##第一步：选择主题<br>hexo含有两份配置文件(_config.yml)，一份位于根目录下——站点配置文件，一份位于主题目录下——主题配置文件。<br>hexo安装主题只需要把主题文件放置到根目录下的themes目录下，然后修改配置文件即可。具体安装步骤如下：</p>
-<p>###1）下载next主题<br>通过git将next主题下载到themes文件next下</p>
-<pre><code>&gt;git clone https://github.com/iissnan/hexo-theme-next shemes/next
-</code></pre><p>###2）启动主题<br>下载完成后，找到站点配置文件，找到theme字段，改为theme： next<br>注意：冒号后有空格</p>
-<p>###3）验证主题是否运行<br>运行</p>
-<blockquote>
-<p>hexo s debug</p>
-</blockquote>
-<p>访问</p>
-<blockquote>
-<p><a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></p>
-</blockquote>
-<p>如果4000端口被占用了，出现错误</p>
-<blockquote>
-<p>FATAL Port 4000 has been used. Try other port instead.<br>hexo server -p 5000<br>更改端口测试</p>
-</blockquote>
-<p>确保站点正确运行</p>
-<p>##第二步：安装主题</p>
-<p>##第三步：配置</p>
-<p>###选择Scheme<br>next通过scheme选择主题中的主题。Mist是NexT的第一款主题。启动Mist需要将主题配置文件中的<br>-#scheme:Mist 前面的注释#去掉</p>
-<p>###语言设置<br>编辑站点配置文件，将language设置成所需要的语言即可</p>
-<table>
-<thead>
-<tr>
-<th>语言</th>
-<th>设定值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>English</td>
-<td>language: en</td>
-</tr>
-<tr>
-<td>简体中文</td>
-<td>language: zh-Hans</td>
-</tr>
-<tr>
-<td>正体中文</td>
-<td>language: zh-hk</td>
-</tr>
-</tbody>
-</table>
-<p>###菜单设置<br>配置位于主题配置文件menu</p>
-<table>
-<thead>
-<tr>
-<th>键值</th>
-<th>设定值</th>
-<th>comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>home</td>
-<td>home: /</td>
-<td>主页</td>
-</tr>
-<tr>
-<td>archives</td>
-<td>archives: /archives</td>
-<td>归档页</td>
-</tr>
-<tr>
-<td>categories</td>
-<td>categories: /categories</td>
-<td>分类页（需手动创建）</td>
-</tr>
-<tr>
-<td>tags</td>
-<td>tags: /tags</td>
-<td>标签页（需手动创建）</td>
-</tr>
-<tr>
-<td>about</td>
-<td>about: /about</td>
-<td>关于页面 （需手动创建）</td>
-</tr>
-<tr>
-<td>commonweal</td>
-<td>commonweal: /404.html</td>
-<td>公益 404 （需手动创建</td>
-</tr>
-</tbody>
-</table>
-<p>###侧边设置<br>默认情况下，侧栏仅在文章页面（拥有目录列表）时才显示。可以通过修改 主题配置文件 中的 sidebar 字段来控制侧栏的行为。</p>
-<p>支持的选项有：</p>
-<blockquote>
-<p>post - 默认行为，在文章页面（拥有目录列表）时显示<br>always - 在所有页面中都显示<br>hide - 在所有页面中都隐藏（可以手动展开）</p>
-</blockquote>
-<p>###头像设置<br>编辑站点配置文件，新增字段avatar，值设置为链接地址。<br>头像的链接地址可以是：</p>
-<table>
-<thead>
-<tr>
-<th>地址</th>
-<th>值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>完整的互联网URL</td>
-<td><a href="https://avatars1.githubusercontent.com/u/32269?v=3&amp;s=460" target="_blank" rel="external">https://avatars1.githubusercontent.com/u/32269?v=3&amp;s=460</a>                                        </td>
-</tr>
-<tr>
-<td>站点内的地址</td>
-<td>/uploads/avatar.jpg - 需要将你的头像图片放置在 站点的 source/uploads/（可能需要新建uploads目录）</td>
-</tr>
-</tbody>
-</table>
-<p>###作者名称<br>编辑 站点配置文件，设置 author 为你的昵称。</p>
-<p>###站点描述设置<br>编辑 站点配置文件，设置 description 字段为你的站点描述。站点描述可以是你喜欢的一句签名:)</p>
-<p>##总结</p>
-<p>#为博客添加阅读量统计</p>
-<p>1.注册LeanCloud<br>2.配置LeanCloud<br>3.修改站点配置文件</p>
-<h1 id="hexo命令"><a href="#hexo命令" class="headerlink" title="hexo命令"></a>hexo命令</h1><p>npm install hexo -g #安装<br>npm update hexo -g #升级<br>hexo init #初始化</p>
-<h2 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h2><p>hexo n “我的博客” == hexo new “我的博客” #新建文章<br>hexo p == hexo publish<br>hexo g == hexo generate#生成<br>hexo s == hexo server #启动服务预览<br>hexo d == hexo deploy#部署</p>
-<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>hexo server #Hexo 会监视文件变动并自动更新，您无须重启服务器。<br>hexo server -s #静态模式<br>hexo server -p 5000 #更改端口<br>hexo server -i 192.168.1.1 #自定义 IP</p>
-<p>hexo clean #清除缓存 网页正常情况下可以忽略此条命令<br>hexo g #生成静态网页<br>hexo d #开始部署</p>
-<h2 id="监视文件变动"><a href="#监视文件变动" class="headerlink" title="监视文件变动"></a>监视文件变动</h2><p>hexo generate #使用 Hexo 生成静态文件快速而且简单<br>hexo generate –watch #监视文件变动</p>
-<h2 id="完成部署后"><a href="#完成部署后" class="headerlink" title="完成部署后"></a>完成部署后</h2><p>两个命令的作用是相同的<br>hexo generate –deploy<br>hexo deploy –generate</p>
-<p>hexo deploy -g<br>hexo server -g</p>
-<h2 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h2><p>hexo publish [layout] <title></title></p>
-<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>hexo new “postName” #新建文章<br>hexo new page “pageName” #新建页面<br>hexo generate #生成静态页面至public目录<br>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>hexo deploy #将.deploy目录部署到GitHub</p>
-<p>hexo new [layout] <title><br>hexo new photo “My Gallery”<br>hexo new “Hello World” –lang tw</title></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/04/Linux-多线程编程/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="GeneralSandman">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://oj8qdsa91.bkt.clouddn.com/1461165599464.jpeg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="GeneralSandman的博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="GeneralSandman的博客" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/04/Linux-多线程编程/" itemprop="url">
-                  Linux多线程编程（一）概念
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-04T21:18:58+08:00">
-                2017-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux多线程编程/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux多线程编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/04/Linux-多线程编程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/04/Linux-多线程编程/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-			
-			
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、线程与进程"><a href="#一、线程与进程" class="headerlink" title="一、线程与进程"></a>一、线程与进程</h2><h3 id="1）区别"><a href="#1）区别" class="headerlink" title="1）区别"></a>1）区别</h3><h4 id="进程和线程的主要差别在于它们是不同的操作系统资源管理方式："><a href="#进程和线程的主要差别在于它们是不同的操作系统资源管理方式：" class="headerlink" title="进程和线程的主要差别在于它们是不同的操作系统资源管理方式："></a>进程和线程的主要差别在于它们是不同的操作系统资源管理方式：</h4><blockquote>
-<p>进程有独立的地址空间，一个进程崩溃后，在保护模式下不会对其它进程产生影响，而线程只是一个进程中的不同执行路径。线程有自己的堆栈和局部变量，但线程之间没有单独的地址空间，一个线程死掉就等于整个进程死掉，所以多进程的程序要比多线程的程序健壮，但在进程切换时，耗费资源较大，效率要差一些。但对于一些要求同时进行并且又要共享某些变量的并发操作，只能用线程，不能用进程。</p>
-</blockquote>
-<h3 id="2）优缺点"><a href="#2）优缺点" class="headerlink" title="2）优缺点"></a>2）优缺点</h3><p>线程执行开销小，但不利于资源的管理和保护；而进程正相反。</p>
-<h2 id="二、如何选择线程和进程"><a href="#二、如何选择线程和进程" class="headerlink" title="二、如何选择线程和进程"></a>二、如何选择线程和进程</h2><p>###线程的优点<br>1.线程之间数据共享非常简单。相比之下，进程之间的数据共享需要更多的投入。(例如创建共享内存段或者使用pipe管道)<br>2.创建线程快于创建进程。线程之间的上下文切换消耗的时间比较短。</p>
-<p>###进程的优点<br>1.多线程编程时，要确保调用线程安全的函数，或者以线程安全的方式调用函数，然而多进程不要关注这些(由操作系统来控制进程安全)。<br>2.某个线程的bug，肯能会影响其他线程，因为线程之间共享着相同的地址空间。相反，进程之间的数据隔离更加彻底。<br>3.每个线程都在争用宿主进程的有限地址空间。如果线程栈和线程特有数据消耗掉进程虚拟地址空间，后续线程将无法使用这些区域。<br>4.不利于资源的管理和保护。</p>
-<p>###选择进程线程注意事项<br>1.除了数据，线程之间还会共享：文件描述符、信号处理、当前工作目录、用户ID和组ID等等。</p>
-<p><img src="http://oj8qdsa91.bkt.clouddn.com/steelsea.jpg" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1703,7 +1873,7 @@ pthread_create(&amp;tid, &amp;attr, THREAD_FUNCTION, arg);
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1712,7 +1882,7 @@ pthread_create(&amp;tid, &amp;attr, THREAD_FUNCTION, arg);
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
