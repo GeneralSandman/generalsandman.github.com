@@ -251,6 +251,138 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/28/mysql学习笔记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="GeneralSandman">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://oj8qdsa91.bkt.clouddn.com/1461165599464.jpeg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="GeneralSandman的博客">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="GeneralSandman的博客" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/28/mysql学习笔记/" itemprop="url">
+                  mysql学习笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-28T21:22:29+08:00">
+                2017-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/28/mysql学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/28/mysql学习笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+			
+			
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1.Linux查看mysql数据库存放目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show variables like &apos;%datadir%&apos;</div></pre></td></tr></table></figure></p>
+<p>2.linux查看mysql导出文件目录，通过INTO OUTFILES 导出的文件必须在这个目录下，否则报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show variables like &apos;%secure%&apos;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/18/next-permutation的原理和使用/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -316,8 +448,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法-面试-C/" itemprop="url" rel="index">
-                    <span itemprop="name">算法 面试 C++</span>
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
                   </a>
                 </span>
 
@@ -364,7 +496,9 @@
       
         
           
-            <h2 id="思路："><a href="#思路：" class="headerlink" title=" 思路："></a><strong> 思路：</strong></h2><p>在当前序列中，从尾端向前寻找两个相邻元素，前一个记为<em>front，后一个记为</em>back，并且满足<em>front &lt; </em>back。然后再从尾端寻找另一个元素<em>tmp，如果满足</em>front &lt; *tmp，即将第front个元素与第tmp个元素对调，并将第back个元素之后（包括back）的所有元素颠倒排序，即求出下一个序列了</p>
+            <h2 id="思路："><a href="#思路：" class="headerlink" title=" 思路："></a><strong> 思路：</strong></h2><blockquote>
+<p>在当前序列中，从尾端向前寻找两个相邻元素，前一个记为<em>front，后一个记为</em>back，并且满足<em>front &lt; </em>back。然后再从尾端寻找另一个元素<em>tmp，如果满足</em>front &lt; *tmp，即将第front个元素与第tmp个元素对调，并将第back个元素之后（包括back）的所有元素颠倒排序，即求出下一个序列了</p>
+</blockquote>
 <h2 id="代码"><a href="#代码" class="headerlink" title=" 代码:"></a><strong> 代码:</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">#include&lt;iostream&gt;</div><div class="line">#include&lt;cstdio&gt;</div><div class="line">#include&lt;cstring&gt;</div><div class="line">using namespace std;</div><div class="line">void reverse(char * begin,char *end)&#123;</div><div class="line">    for(end--;begin&lt;end;begin++,end--)swap(*begin,*end);</div><div class="line">&#125;</div><div class="line">bool next_permutation(char *begin,char *end)&#123;</div><div class="line">    char *front=end-2;</div><div class="line">    char *back=end-1;</div><div class="line">    for(;front&gt;=begin&amp;&amp;*front&gt;=*back;front--,back--);</div><div class="line">    if(front&lt;begin)</div><div class="line">        return false;</div><div class="line">    char *tmp=end-1;</div><div class="line">    for(;*front&gt;=*tmp;tmp--);</div><div class="line">    swap(*front,*tmp);</div><div class="line">    reverse(back,end);</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line">int main()&#123;</div><div class="line">    char tmp []=&quot;1234&quot;;</div><div class="line">    do&#123;</div><div class="line">        printf(&quot;%s\n&quot;,tmp);</div><div class="line">    &#125;</div><div class="line">    while(next_permutation(tmp,tmp+strlen(tmp)));</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="结果："><a href="#结果：" class="headerlink" title=" 结果： "></a><strong> 结果： </strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">li@li-Inspiron-5557:~/桌面$ ./a</div><div class="line">1234</div><div class="line">1243</div><div class="line">1324</div><div class="line">1342</div><div class="line">1423</div><div class="line">1432</div><div class="line">2134</div><div class="line">2143</div><div class="line">2314</div><div class="line">2341</div><div class="line">2413</div><div class="line">2431</div><div class="line">3124</div><div class="line">3142</div><div class="line">3214</div><div class="line">3241</div><div class="line">3412</div><div class="line">3421</div><div class="line">4123</div><div class="line">4132</div><div class="line">4213</div><div class="line">4231</div><div class="line">4312</div><div class="line">4321</div></pre></td></tr></table></figure>
 <p>通过验证，与C++模板中的next_permutation的结果一样。</p>
@@ -432,7 +566,7 @@
               
                 
                 <a class="post-title-link" href="/2017/01/18/字符串之排列和组合/" itemprop="url">
-                  字符串之排列和组合
+                  字符串(一)排列和组合
                 </a>
               
             
@@ -471,8 +605,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/面试-算法-字符串-C/" itemprop="url" rel="index">
-                    <span itemprop="name">面试 算法 字符串 C++</span>
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
                   </a>
                 </span>
 
@@ -519,7 +653,8 @@
       
         
           
-            <h1 id="一、字符串的排列"><a href="#一、字符串的排列" class="headerlink" title="一、字符串的排列"></a>一、字符串的排列</h1><h2 id="1-全排列-递归-有重复"><a href="#1-全排列-递归-有重复" class="headerlink" title="1.全排列-递归-有重复"></a>1.全排列-递归-有重复</h2><blockquote>
+            <h1 id="一、字符串的排列"><a href="#一、字符串的排列" class="headerlink" title="一、字符串的排列"></a>一、字符串的排列</h1><hr>
+<h2 id="1-全排列-递归-有重复"><a href="#1-全排列-递归-有重复" class="headerlink" title="1.全排列-递归-有重复"></a>1.全排列-递归-有重复</h2><blockquote>
 <p>输入一个字符串，输出其全排列，123的全排列为：123、 132、213、231、 312、 321；</p>
 </blockquote>
 <p><strong> 思路： </strong> 可以看出，123的全排列可以看做：1+23全排列、2+13全排列、3+12全排列；23全排列可以看做2+3的全排列、3+2的全排列……<br>哈哈，这样就显而易见了,任何一个字符串的全排列可以看做是：<br>1.(开头字符串)+(剩余字符串的全排列)，通过递归就可以实现；<br>2.因为开头字符串不是固定的，所以我们要轮流交换字符串，让任何一个字符串都有在开头的机会。</p>
@@ -527,10 +662,30 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">#include&lt;iostream&gt;</div><div class="line">#include&lt;cstdio&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">void function(char *ptr,char * begin);</div><div class="line">int main()&#123;</div><div class="line">    char  tm[]=&quot;123&quot;;</div><div class="line">    function(tm,tm);</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void function(char * ptr,char *begin)&#123;</div><div class="line">    if(*begin==&apos;\0&apos;)</div><div class="line">        printf(&quot;%s\n&quot;,ptr);</div><div class="line">    else&#123;</div><div class="line">        for(char *tmp=begin;*tmp!=&apos;\0&apos;;tmp++)&#123;</div><div class="line">            swap(*tmp,*begin);</div><div class="line">            function(ptr,begin+1);</div><div class="line">            swap(*tmp,*begin);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="2-全排列-递归-无重复"><a href="#2-全排列-递归-无重复" class="headerlink" title="2.全排列-递归-无重复"></a>2.全排列-递归-无重复</h2><p><strong> 但是如果字符串中有重复的字符会怎样呢 </strong></p>
 <p>如果字符串为111：<br>运行结果为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">li@li-Inspiron-5557:~/桌面/剑指offer$ ./28 </div><div class="line">111</div><div class="line">111</div><div class="line">111</div><div class="line">111</div><div class="line">111</div><div class="line">111</div></pre></td></tr></table></figure>
-<p>所以这样的结果是错误的，如何去重呢：</p>
-<p>如果两个互相交换的字符一样的话，那么就不用交换了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
-<h2 id="3-全排列-非递归-无重复"><a href="#3-全排列-非递归-无重复" class="headerlink" title="3.全排列-非递归-无重复"></a>3.全排列-非递归-无重复</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">li@li-Inspiron-5557:~/桌面/剑指offer$ ./28</div><div class="line">111</div><div class="line">111</div><div class="line">111</div><div class="line">111</div><div class="line">111</div><div class="line">111</div></pre></td></tr></table></figure>
+<p>所以这样的结果是错误的，如何去重呢：<br>对122，第一个数1与第二个数2交换得到212，然后考虑第一个数1与第三个数2交换，此时由于第三个数等于第二个数，所以第一个数不再与第三个数交换。再考虑212，它的第二个数与第三个数交换可以得到解决221。此时全排列生成完毕。<br>这样我们也得到了在全排列中去掉重复的规则——去重的全排列就是从第一个数字起每个数分别与它后面非重复出现的数字交换。用编程的话描述就是第i个数与第j个数交换时，要求[i,j)中没有与第j个数相等的数。下面给出完整代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">#include&lt;iostream&gt;</div><div class="line">#include&lt;cstdio&gt;</div><div class="line">using namespace std;</div><div class="line">bool check(char *ptr,char * begin,char * end);</div><div class="line">void function(char *ptr,char * begin);</div><div class="line">int main()&#123;</div><div class="line">    char  tm[]=&quot;122&quot;;</div><div class="line">    function(tm,tm);</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line">bool check(char *ptr,char * begin,char * end)&#123;</div><div class="line">    for(char* i=begin;i&lt;end;i++)&#123;</div><div class="line">        if(*i==*end)</div><div class="line">            return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return true;</div><div class="line"></div><div class="line">&#125;</div><div class="line">void function(char * ptr,char *begin)&#123;</div><div class="line">    if(*begin==&apos;\0&apos;)</div><div class="line">        printf(&quot;%s\n&quot;,ptr);</div><div class="line">    else&#123;</div><div class="line">        for(char *tmp=begin;*tmp!=&apos;\0&apos;;tmp++)&#123;</div><div class="line">            if(check(ptr,begin,tmp))&#123;</div><div class="line">                swap(*tmp,*begin);</div><div class="line">                function(ptr,begin+1);</div><div class="line">                swap(*tmp,*begin);;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="3-全排列-非递归-无重复"><a href="#3-全排列-非递归-无重复" class="headerlink" title="3.全排列-非递归-无重复"></a>3.全排列-非递归-无重复</h2><p><a href="http://generalsandman.cn/2017/01/18/next-permutation%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/" target="_blank" rel="external">即C++ STL next_permutation 函数的实现</a></p>
+<blockquote>
+<p>使用非递归法，要求我们实现的函数具有这样的功能：对于任一序列可以按照字典序计算出下一序列。如：21543的下一序列是23145，分四步：<br>1.从最右边开始比较两两相邻的元素，知道找到第一个升序的元素对，并记录元素对左边的元素a[i]，当i&lt;0时，结束（上例中找到的元素为1）<br>2.从最右边开始找到第一个比a[i]大的元素a[k]（找到3）<br>3.交换a[i]和a[j]（交换1和3）<br>4.把从i+1位到最后的元素翻转</p>
+</blockquote>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a><strong>代码:</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">#include&lt;iostream&gt;</div><div class="line">#include&lt;cstdio&gt;</div><div class="line">#include&lt;cstring&gt;</div><div class="line">using namespace std;</div><div class="line">void reverse(char * begin,char *end)&#123;</div><div class="line">    for(end--;begin&lt;end;begin++,end--)swap(*begin,*end);</div><div class="line">&#125;</div><div class="line">bool next_permutation(char *begin,char *end)&#123;</div><div class="line">    char *front=end-2;</div><div class="line">    char *back=end-1;</div><div class="line">    for(;front&gt;=begin&amp;&amp;*front&gt;=*back;front--,back--);</div><div class="line">    if(front&lt;begin)</div><div class="line">        return false;</div><div class="line">    char *tmp=end-1;</div><div class="line">    for(;*front&gt;=*tmp;tmp--);</div><div class="line">    swap(*front,*tmp);</div><div class="line">    reverse(back,end);</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line">int main()&#123;</div><div class="line">    char tmp []=&quot;1234&quot;;</div><div class="line">    do&#123;</div><div class="line">        printf(&quot;%s\n&quot;,tmp);</div><div class="line">    &#125;</div><div class="line">    while(next_permutation(tmp,tmp+strlen(tmp)));</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4-深搜法"><a href="#4-深搜法" class="headerlink" title="4.深搜法"></a>4.深搜法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;string&gt;</div><div class="line">#include &lt;algorithm&gt;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">string str;</div><div class="line">bool mark[100];</div><div class="line">int ans[100];</div><div class="line">void DFS(int pos, int num)</div><div class="line">&#123;</div><div class="line">    if(num == str.length())</div><div class="line">    &#123;</div><div class="line">        for(int i = 0; i &lt; num; ++i)</div><div class="line">            cout &lt;&lt; str[ans[i]];</div><div class="line">        cout &lt;&lt; endl;</div><div class="line"></div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    for(int i = 0; i &lt; str.length(); ++i)</div><div class="line">    &#123;</div><div class="line">        if(mark[i] == true)</div><div class="line">            continue;</div><div class="line">        mark[i] = true;</div><div class="line">        ans[num] = i;</div><div class="line">        DFS(i, num+1);</div><div class="line">        mark[i] = false;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">    ifstream cin(&quot;in.txt&quot;);</div><div class="line"></div><div class="line">    while(getline(cin, str))</div><div class="line">    &#123;</div><div class="line">        sort(str.begin(), str.end());</div><div class="line"></div><div class="line">        for(int i = 0; i &lt; str.length(); ++i)</div><div class="line">        &#123;</div><div class="line">            for(int j = 0; j &lt; str.length(); ++j)</div><div class="line">            &#123;</div><div class="line">                ans[j] = 0;</div><div class="line">                mark[j] = false;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            mark[i] = true;</div><div class="line">            ans[0] = i;</div><div class="line">            DFS(i, 1);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="二、字符串的组合"><a href="#二、字符串的组合" class="headerlink" title="二、字符串的组合"></a>二、字符串的组合</h1><hr>
+<p><strong> 思路：</strong></p>
+<blockquote>
+<p>同样是用递归求解。可以考虑求长度为n的字符串中m个字符的组合，设为C(n,m)。原问题的解即为C(n, 1), C(n, 2),…C(n, n)的总和。对于求C(n, m)，从第一个字符开始扫描，每个字符有两种情况，要么被选中，要么不被选中，如果被选中，递归求解C(n-1, m-1)。如果未被选中，递归求解C(n-1, m)。不管哪种方式，n的值都会减少，递归的终止条件n=0或m=0。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">#include&lt;iostream&gt;</div><div class="line">#include&lt;cstdlib&gt;</div><div class="line">#include&lt;vector&gt;</div><div class="line">#include&lt;cstring&gt;</div><div class="line">using namespace std;</div><div class="line">void Combination(char * ptr);</div><div class="line">void Combination(char * ptr,int i,vector&lt;char&gt; &amp; res);</div><div class="line">int main()&#123;</div><div class="line">    char p[]=&quot;aabc&quot;;</div><div class="line">    Combination(p);</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line">void Combination(char * ptr)&#123;</div><div class="line">    if(ptr==NULL||*ptr==&apos;\0&apos;)</div><div class="line">        return;</div><div class="line">    //select i numbers from ptr;</div><div class="line">    for(int i=1;i&lt;=strlen(ptr);i++)&#123;</div><div class="line">            vector&lt;char&gt; result;</div><div class="line">            Combination(ptr,i,result);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">void Combination(char * ptr,int number,vector&lt;char&gt; &amp; res)&#123;</div><div class="line">        if(ptr == NULL || (*ptr == &apos;\0&apos;&amp;&amp; number!= 0))</div><div class="line">        return;</div><div class="line">        //no number to selected</div><div class="line">        if(number==0)&#123;</div><div class="line"></div><div class="line">            for(vector&lt;char&gt;::iterator p=res.begin();p!=res.end();p++)</div><div class="line">                cout&lt;&lt;*p;</div><div class="line">            cout&lt;&lt;endl;</div><div class="line">            return ;</div><div class="line">        &#125;</div><div class="line">        //have select current char,so select (number-1) numbers from next ptr</div><div class="line">        res.push_back(*ptr);</div><div class="line">        Combination(ptr+1,number-1,res);</div><div class="line">        res.pop_back();</div><div class="line">        //havn&apos;t select current char</div><div class="line">        Combination(ptr+1,number,res);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="三、问题应用"><a href="#三、问题应用" class="headerlink" title="三、问题应用"></a>三、问题应用</h1><h2 id="1-打靶问题"><a href="#1-打靶问题" class="headerlink" title="1.打靶问题"></a>1.打靶问题</h2><blockquote>
+<p>一个射击运动员打靶，靶一共有10环，连开10 枪打中90环的可能性有多少？</p>
+</blockquote>
+<h2 id="2-八皇后问题"><a href="#2-八皇后问题" class="headerlink" title="2.八皇后问题"></a>2.八皇后问题</h2><blockquote>
+<p>在8×8的国际象棋上摆放八个皇后，使其不能相互攻击，即任意两个皇后不得处在同一行、同一列或者同一对角斜线上。下图中的每个黑色格子表示一个皇后，这就是一种符合条件的摆放方法。请求出总共有多少种摆法。</p>
+</blockquote>
+<p><strong> 思路：</strong><br>由于八个皇后的任意两个不能处在同一行，那么这肯定是每一个皇后占据一行。于是我们可以定义一个数组ColumnIndex[8]，数组中第i个数字表示位于第i行的皇后的列号。先把ColumnIndex的八个数字分别用0-7初始化，接下来我们要做的事情就是对数组ColumnIndex做全排列。由于我们是用不同的数字初始化数组中的数字，因此任意两个皇后肯定不同列。我们只需要判断得到的每一个排列对应的八个皇后是不是在同一对角斜线上，也就是数组的两个下标i和j，是不是i-j==ColumnIndex[i]-Column[j]或者j-i==ColumnIndex[i]-ColumnIndex[j]。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+
           
         
       
@@ -594,7 +749,7 @@
               
                 
                 <a class="post-title-link" href="/2017/01/17/面试考点-字符串/" itemprop="url">
-                  面试考点-字符串
+                  字符串之旋转
                 </a>
               
             
@@ -659,7 +814,10 @@
       
         
           
-            
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个字符串，要求把字符串前面的若干个字符移动到字符串的尾部，如把字符串“abcdef”前面的2个字符’a’和’b’移动到字符串的尾部，使得原字符串变成字符串“cdefab”。请写一个函数完成此功能，要求对长度为n的字符串操作的时间复杂度为 O(n)，空间复杂度为 O(1)。</p>
+<p>对于这个问题，换一个角度思考一下。<br>将一个字符串分成X和Y两个部分，在每部分字符串上定义反转操作，如X^T，即把X的所有字符反转（如，X=”abc”，那么X^T=”cba”），那么就得到下面的结论：(X^TY^T)^T=YX，显然就解决了字符串的反转问题。<br>例如，字符串 abcdef ，若要让def翻转到abc的前头，只要按照下述3个步骤操作即可：<br>首先将原字符串分为两个部分，即X:abc，Y:def；<br>将X反转，X-&gt;X^T，即得：abc-&gt;cba；将Y反转，Y-&gt;Y^T，即得：def-&gt;fed。<br>反转上述步骤得到的结果字符串X^TY^T，即反转字符串cbafed的两部分（cba和fed）给予反转，cbafed得到defabc，形式化表示为(X^TY^T)^T=YX，这就实现了整个反转。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#include&lt;iostream&gt;</div><div class="line">#include&lt;cstring&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">void roating(char *,int ,int);</div><div class="line">void function(char *ptr,int n,int number)&#123;</div><div class="line">    roating(ptr,0,n-1);</div><div class="line">    roating(ptr,n,number-1);</div><div class="line">    roating(ptr,0,number-1);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">void roating(char *ptr,int begin,int end)&#123;</div><div class="line">    while(begin&lt;end)&#123;</div><div class="line">        swap(ptr[begin],ptr[end]);</div><div class="line">        begin++;</div><div class="line">        end--;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    char a[]=&quot;abcdef&quot;;</div><div class="line">    function(a,2,strlen(a));</div><div class="line">    cout&lt;&lt;a&lt;&lt;endl;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
           
         
       
@@ -1638,194 +1796,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/05/linux系统多线程编程（二）/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="GeneralSandman">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://oj8qdsa91.bkt.clouddn.com/1461165599464.jpeg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="GeneralSandman的博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="GeneralSandman的博客" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/05/linux系统多线程编程（二）/" itemprop="url">
-                  Linux多线程编程（二）线程的创建和终止
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-05T12:54:00+08:00">
-                2017-01-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux多线程编程/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux多线程编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/05/linux系统多线程编程（二）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/05/linux系统多线程编程（二）/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-			
-			
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、线程的创建"><a href="#一、线程的创建" class="headerlink" title="一、线程的创建"></a>一、线程的创建</h3><h4 id="1-相关库函数"><a href="#1-相关库函数" class="headerlink" title="1)相关库函数:"></a>1)相关库函数:</h4><pre><code>int pthread_create(pthread_t *thread,const pthread_attr_t * attr,void*(*start)(void *),void *arg);
-</code></pre><ul>
-<li>新线程创建之后会通过调用start(arg)函数开始执行。</li>
-<li>thread参数在函数返回之后将保存一个线程的唯一标示(线程ID)。</li>
-<li>通过attr 参数来制定线程的属性，若此参数为NULL，将使用线程的默认属性，线程的默认分离属性为joinable。</li>
-</ul>
-<h4 id="2-创建线程的状态"><a href="#2-创建线程的状态" class="headerlink" title="2)创建线程的状态"></a>2)创建线程的状态</h4><p><strong>线程之间将会共享：</strong></p>
-<ul>
-<li>进程ID和父进程ID</li>
-<li>控制终端</li>
-<li>打开的文件描述符</li>
-<li>信号处置</li>
-<li>errno变量</li>
-</ul>
-<h3 id="二、线程的结束"><a href="#二、线程的结束" class="headerlink" title="二、线程的结束"></a>二、线程的结束</h3><h3 id="1）终止线程方式："><a href="#1）终止线程方式：" class="headerlink" title="1）终止线程方式："></a>1）终止线程方式：</h3><ul>
-<li>线程调用的start函数结束之后即终止创建的线程。</li>
-<li>线程调用pthread_exit()。</li>
-<li>线程调用pthread_cancel()取消线程。</li>
-<li>若任一线程调用exit(),或者主线程调用了return语句，则所有的线程都会终止。</li>
-</ul>
-<p>通过调用pthread_exit()结束线程，相当于在start函数中调用return语句，返回值将有主线程的pthread_join()来获取。retval参数制定了线程退出时的返回值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void pthread_exit(void *retval);</div></pre></td></tr></table></figure>
-<h3 id="三、处置已经终止的线程"><a href="#三、处置已经终止的线程" class="headerlink" title="三、处置已经终止的线程"></a>三、处置已经终止的线程</h3><blockquote>
-<p>线程的分离和结合:<br>线程有两种分离状态:结合(joined)和分离(dected),他们决定了线程以什么样的方式结束。<br>结合(joinable):一个可以结合的线程可以被其他线程回收，进而释放该线程所拥有的资源。所以在线程被结合之前，线程拥有的资源是不会被释放的。<br>分离(detached):不能被其他线程所回收，他所拥有的资源将在系统结束时被自动释放。<br>在上面的例子中，我们采用默认的线程分离状态:可结合的(joinable)。也就是说我们在创建线程之后，原先的线程必须采用pthread_join()才能把创建的线程回收，进而释放他拥有的资源。如果不能释放，就形成了僵尸进程。如果选择进程为分离状态，那么创建的进程将会在某个时刻自动释放资源，不需要主线程来回收。<br>工程师要根据特定的需求选择线程的分离状态。<br>设置线程分离类型的函数:<br>pthread_attr_setdetachedstate()<br>第二个参数可以选择PTHREAD_CREATE_DETACHED(可分离)<br>PTHREAD_CREATE_JOINABLE(可结合)<br>如果线程运行的非常快，在pthread_create()函数返回之前就已经运行结束，终止后，会把线程号和其他资源交给别人，这样pthread_create()就会得到错误的线程号。为解决这个问题:创建的线程调用pthread_cond_timewait()应该等待一会儿，pthread_cond_timewait()可以设置等待条件变量cond，如果超时，则返回；如果等待到条件变量cond，也返回。</p>
-</blockquote>
-<h4 id="1-相关库函数-1"><a href="#1-相关库函数-1" class="headerlink" title="1)相关库函数"></a>1)相关库函数</h4><pre><code>int pthread_join(pthread_t thread,void ** retval);
-pthread_detached(pthread_t thread);
-</code></pre><h4 id="2-通过joinable来终止线程"><a href="#2-通过joinable来终止线程" class="headerlink" title="2)通过joinable来终止线程"></a>2)通过joinable来终止线程</h4><p>如果线程终止状态为joinable，则只能由创建该线程的主线程来调用pthread_join()去回收资源。线程创建后默认为joinable。</p>
-<h4 id="3-通过detached分离线程"><a href="#3-通过detached分离线程" class="headerlink" title="3)通过detached分离线程"></a>3)通过detached分离线程</h4><p>分离线程，我们不关心线程的终止状态，让他们的资源在结束后被系统自动释放。通过操作系统来释放他们的资源。</p>
-<h5 id="如何设定detached类型"><a href="#如何设定detached类型" class="headerlink" title="如何设定detached类型"></a><strong><em>如何设定detached类型</em></strong></h5><p>1)在创建线程时，指定分离状态:首先初始化一个线程属性，把分离状态设置为detached，然后把线程属性作为参数传给pthread_create()，我们以前创建线程pthread_attr_t参数为NULL，系统默认为分离属性为joinable。</p>
-<pre><code>pthread_t       tid;
-pthread_attr_t  attr;
-pthread_attr_init(&amp;attr);
-pthread_attr_setdetachstate(&amp;attr, PTHREAD_CREATE_DETACHED);
-pthread_create(&amp;tid, &amp;attr, THREAD_FUNCTION, arg);
-</code></pre><p>2)先创建默认属性线程，通过调用pthread_detached()来修改指定线程属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">代码</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1873,7 +1843,7 @@ pthread_create(&amp;tid, &amp;attr, THREAD_FUNCTION, arg);
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1882,7 +1852,7 @@ pthread_create(&amp;tid, &amp;attr, THREAD_FUNCTION, arg);
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

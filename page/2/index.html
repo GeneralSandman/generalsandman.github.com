@@ -251,6 +251,194 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/05/linux系统多线程编程（二）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="GeneralSandman">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://oj8qdsa91.bkt.clouddn.com/1461165599464.jpeg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="GeneralSandman的博客">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="GeneralSandman的博客" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/05/linux系统多线程编程（二）/" itemprop="url">
+                  Linux多线程编程（二）线程的创建和终止
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-05T12:54:00+08:00">
+                2017-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux多线程编程/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux多线程编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/05/linux系统多线程编程（二）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/05/linux系统多线程编程（二）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+			
+			
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、线程的创建"><a href="#一、线程的创建" class="headerlink" title="一、线程的创建"></a>一、线程的创建</h3><h4 id="1-相关库函数"><a href="#1-相关库函数" class="headerlink" title="1)相关库函数:"></a>1)相关库函数:</h4><pre><code>int pthread_create(pthread_t *thread,const pthread_attr_t * attr,void*(*start)(void *),void *arg);
+</code></pre><ul>
+<li>新线程创建之后会通过调用start(arg)函数开始执行。</li>
+<li>thread参数在函数返回之后将保存一个线程的唯一标示(线程ID)。</li>
+<li>通过attr 参数来制定线程的属性，若此参数为NULL，将使用线程的默认属性，线程的默认分离属性为joinable。</li>
+</ul>
+<h4 id="2-创建线程的状态"><a href="#2-创建线程的状态" class="headerlink" title="2)创建线程的状态"></a>2)创建线程的状态</h4><p><strong>线程之间将会共享：</strong></p>
+<ul>
+<li>进程ID和父进程ID</li>
+<li>控制终端</li>
+<li>打开的文件描述符</li>
+<li>信号处置</li>
+<li>errno变量</li>
+</ul>
+<h3 id="二、线程的结束"><a href="#二、线程的结束" class="headerlink" title="二、线程的结束"></a>二、线程的结束</h3><h3 id="1）终止线程方式："><a href="#1）终止线程方式：" class="headerlink" title="1）终止线程方式："></a>1）终止线程方式：</h3><ul>
+<li>线程调用的start函数结束之后即终止创建的线程。</li>
+<li>线程调用pthread_exit()。</li>
+<li>线程调用pthread_cancel()取消线程。</li>
+<li>若任一线程调用exit(),或者主线程调用了return语句，则所有的线程都会终止。</li>
+</ul>
+<p>通过调用pthread_exit()结束线程，相当于在start函数中调用return语句，返回值将有主线程的pthread_join()来获取。retval参数制定了线程退出时的返回值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void pthread_exit(void *retval);</div></pre></td></tr></table></figure>
+<h3 id="三、处置已经终止的线程"><a href="#三、处置已经终止的线程" class="headerlink" title="三、处置已经终止的线程"></a>三、处置已经终止的线程</h3><blockquote>
+<p>线程的分离和结合:<br>线程有两种分离状态:结合(joined)和分离(dected),他们决定了线程以什么样的方式结束。<br>结合(joinable):一个可以结合的线程可以被其他线程回收，进而释放该线程所拥有的资源。所以在线程被结合之前，线程拥有的资源是不会被释放的。<br>分离(detached):不能被其他线程所回收，他所拥有的资源将在系统结束时被自动释放。<br>在上面的例子中，我们采用默认的线程分离状态:可结合的(joinable)。也就是说我们在创建线程之后，原先的线程必须采用pthread_join()才能把创建的线程回收，进而释放他拥有的资源。如果不能释放，就形成了僵尸进程。如果选择进程为分离状态，那么创建的进程将会在某个时刻自动释放资源，不需要主线程来回收。<br>工程师要根据特定的需求选择线程的分离状态。<br>设置线程分离类型的函数:<br>pthread_attr_setdetachedstate()<br>第二个参数可以选择PTHREAD_CREATE_DETACHED(可分离)<br>PTHREAD_CREATE_JOINABLE(可结合)<br>如果线程运行的非常快，在pthread_create()函数返回之前就已经运行结束，终止后，会把线程号和其他资源交给别人，这样pthread_create()就会得到错误的线程号。为解决这个问题:创建的线程调用pthread_cond_timewait()应该等待一会儿，pthread_cond_timewait()可以设置等待条件变量cond，如果超时，则返回；如果等待到条件变量cond，也返回。</p>
+</blockquote>
+<h4 id="1-相关库函数-1"><a href="#1-相关库函数-1" class="headerlink" title="1)相关库函数"></a>1)相关库函数</h4><pre><code>int pthread_join(pthread_t thread,void ** retval);
+pthread_detached(pthread_t thread);
+</code></pre><h4 id="2-通过joinable来终止线程"><a href="#2-通过joinable来终止线程" class="headerlink" title="2)通过joinable来终止线程"></a>2)通过joinable来终止线程</h4><p>如果线程终止状态为joinable，则只能由创建该线程的主线程来调用pthread_join()去回收资源。线程创建后默认为joinable。</p>
+<h4 id="3-通过detached分离线程"><a href="#3-通过detached分离线程" class="headerlink" title="3)通过detached分离线程"></a>3)通过detached分离线程</h4><p>分离线程，我们不关心线程的终止状态，让他们的资源在结束后被系统自动释放。通过操作系统来释放他们的资源。</p>
+<h5 id="如何设定detached类型"><a href="#如何设定detached类型" class="headerlink" title="如何设定detached类型"></a><strong><em>如何设定detached类型</em></strong></h5><p>1)在创建线程时，指定分离状态:首先初始化一个线程属性，把分离状态设置为detached，然后把线程属性作为参数传给pthread_create()，我们以前创建线程pthread_attr_t参数为NULL，系统默认为分离属性为joinable。</p>
+<pre><code>pthread_t       tid;
+pthread_attr_t  attr;
+pthread_attr_init(&amp;attr);
+pthread_attr_setdetachstate(&amp;attr, PTHREAD_CREATE_DETACHED);
+pthread_create(&amp;tid, &amp;attr, THREAD_FUNCTION, arg);
+</code></pre><p>2)先创建默认属性线程，通过调用pthread_detached()来修改指定线程属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">代码</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/04/Linux-多线程编程/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -701,7 +889,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -710,7 +898,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

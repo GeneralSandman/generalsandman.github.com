@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="追求卓越，成功就会不请自来！！！">
+<meta name="description" content="题目描述给定一个字符串，要求把字符串前面的若干个字符移动到字符串的尾部，如把字符串“abcdef”前面的2个字符’a’和’b’移动到字符串的尾部，使得原字符串变成字符串“cdefab”。请写一个函数完成此功能，要求对长度为n的字符串操作的时间复杂度为 O(n)，空间复杂度为 O(1)。
+对于这个问题，换一个角度思考一下。将一个字符串分成X和Y两个部分，在每部分字符串上定义反转操作，如X^T，即把X">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面试考点-字符串">
+<meta property="og:title" content="字符串之旋转">
 <meta property="og:url" content="http://yoursite.com/2017/01/17/面试考点-字符串/index.html">
 <meta property="og:site_name" content="GeneralSandman的博客">
-<meta property="og:description" content="追求卓越，成功就会不请自来！！！">
-<meta property="og:updated_time" content="2017-01-17T08:55:58.485Z">
+<meta property="og:description" content="题目描述给定一个字符串，要求把字符串前面的若干个字符移动到字符串的尾部，如把字符串“abcdef”前面的2个字符’a’和’b’移动到字符串的尾部，使得原字符串变成字符串“cdefab”。请写一个函数完成此功能，要求对长度为n的字符串操作的时间复杂度为 O(n)，空间复杂度为 O(1)。
+对于这个问题，换一个角度思考一下。将一个字符串分成X和Y两个部分，在每部分字符串上定义反转操作，如X^T，即把X">
+<meta property="og:updated_time" content="2017-01-19T05:40:12.763Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面试考点-字符串">
-<meta name="twitter:description" content="追求卓越，成功就会不请自来！！！">
+<meta name="twitter:title" content="字符串之旋转">
+<meta name="twitter:description" content="题目描述给定一个字符串，要求把字符串前面的若干个字符移动到字符串的尾部，如把字符串“abcdef”前面的2个字符’a’和’b’移动到字符串的尾部，使得原字符串变成字符串“cdefab”。请写一个函数完成此功能，要求对长度为n的字符串操作的时间复杂度为 O(n)，空间复杂度为 O(1)。
+对于这个问题，换一个角度思考一下。将一个字符串分成X和Y两个部分，在每部分字符串上定义反转操作，如X^T，即把X">
 
 
 
@@ -127,7 +130,7 @@
 
 
 
-  <title> 面试考点-字符串 | GeneralSandman的博客 </title>
+  <title> 字符串之旋转 | GeneralSandman的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -274,7 +277,7 @@
             
             
               
-                面试考点-字符串
+                字符串之旋转
               
             
           </h1>
@@ -345,7 +348,10 @@
       
 
       
-        
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个字符串，要求把字符串前面的若干个字符移动到字符串的尾部，如把字符串“abcdef”前面的2个字符’a’和’b’移动到字符串的尾部，使得原字符串变成字符串“cdefab”。请写一个函数完成此功能，要求对长度为n的字符串操作的时间复杂度为 O(n)，空间复杂度为 O(1)。</p>
+<p>对于这个问题，换一个角度思考一下。<br>将一个字符串分成X和Y两个部分，在每部分字符串上定义反转操作，如X^T，即把X的所有字符反转（如，X=”abc”，那么X^T=”cba”），那么就得到下面的结论：(X^TY^T)^T=YX，显然就解决了字符串的反转问题。<br>例如，字符串 abcdef ，若要让def翻转到abc的前头，只要按照下述3个步骤操作即可：<br>首先将原字符串分为两个部分，即X:abc，Y:def；<br>将X反转，X-&gt;X^T，即得：abc-&gt;cba；将Y反转，Y-&gt;Y^T，即得：def-&gt;fed。<br>反转上述步骤得到的结果字符串X^TY^T，即反转字符串cbafed的两部分（cba和fed）给予反转，cbafed得到defabc，形式化表示为(X^TY^T)^T=YX，这就实现了整个反转。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#include&lt;iostream&gt;</div><div class="line">#include&lt;cstring&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">void roating(char *,int ,int);</div><div class="line">void function(char *ptr,int n,int number)&#123;</div><div class="line">    roating(ptr,0,n-1);</div><div class="line">    roating(ptr,n,number-1);</div><div class="line">    roating(ptr,0,number-1);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">void roating(char *ptr,int begin,int end)&#123;</div><div class="line">    while(begin&lt;end)&#123;</div><div class="line">        swap(ptr[begin],ptr[end]);</div><div class="line">        begin++;</div><div class="line">        end--;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    char a[]=&quot;abcdef&quot;;</div><div class="line">    function(a,2,strlen(a));</div><div class="line">    cout&lt;&lt;a&lt;&lt;endl;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -381,8 +387,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/18/字符串之排列和组合/" rel="prev" title="字符串之排列和组合">
-                字符串之排列和组合 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/18/字符串之排列和组合/" rel="prev" title="字符串(一)排列和组合">
+                字符串(一)排列和组合 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -410,7 +416,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2017/01/17/面试考点-字符串/"
-           data-title="面试考点-字符串" data-url="http://yoursite.com/2017/01/17/面试考点-字符串/">
+           data-title="字符串之旋转" data-url="http://yoursite.com/2017/01/17/面试考点-字符串/">
       </div>
     
   </div>
@@ -434,8 +440,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://oj8qdsa91.bkt.clouddn.com/1461165599464.jpeg"
@@ -448,7 +463,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -457,7 +472,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -491,6 +506,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
